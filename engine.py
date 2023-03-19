@@ -1,3 +1,11 @@
+def create_enemy(number):
+    '''
+    Creates enemies in the given number.
+    Each enemy has it's own characteristic.
+    
+    '''
+    pass
+
 def create_board(width, height):
     '''
     Creates a new game board based on input parameters.

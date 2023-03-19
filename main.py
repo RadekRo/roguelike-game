@@ -20,7 +20,6 @@ def create_player():
     '''
     pass
 
-
 def main():
     player = create_player()
     board = engine.create_board(BOARD_WIDTH, BOARD_HEIGHT)
