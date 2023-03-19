@@ -22,7 +22,7 @@ def evoke_milestone():
     pass
 
 
-def create_enemy(number = 2):
+def create_enemy(level, number = 2):
     '''
     Creates enemies in the given number.
     Each enemy has it's own characteristic.
@@ -31,10 +31,10 @@ def create_enemy(number = 2):
     pass
 
 def create_board(width, height): # to będzie robił Greg
-    board = []
+    board = list()
     board_fill = "~"
     for i in range(0, height):
-        row = []
+        row = list()
         for j in range(0,width):
             row.append(board_fill)
         board.append(row)
