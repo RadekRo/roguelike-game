@@ -1,8 +1,8 @@
-def create_enemy(number):
+def create_enemy(number = 2):
     '''
     Creates enemies in the given number.
     Each enemy has it's own characteristic.
-    
+    Create at least 2 enemies
     '''
     pass
 
