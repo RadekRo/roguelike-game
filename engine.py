@@ -5,9 +5,10 @@ class Enemy:
   def __init__(self, name, level = 1):
     self.name = name
     self.strength = level * random.randint(2, 4)
+    self.health = level * random.randint(3, 5)
   
   def __str__(self):
-    return f"{self.name}({self.age})({self.strength})"
+    return f"{self.name}(strength: {self.strength}, health: {self.health})"
 
 
 def evoke_hangman():
