@@ -20,10 +20,11 @@ def create_player():
     '''
     pass
 
+
 def main():
     player = create_player()
     board = engine.create_board(BOARD_WIDTH, BOARD_HEIGHT)
-
+    print(board)
     util.clear_screen()
     is_running = True
     while is_running:
