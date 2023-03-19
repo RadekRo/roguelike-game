@@ -1,15 +1,25 @@
-# DO NOT MODIFY FUNCTIONS BELOW - part of a create enemy function!
+import random
+# DO NOT MODIFY FUNCTIONS AND CLASS BELOW - part of a create enemy function!
 
-def evoke_hangman()
-  pass
-def evoke_tic_tac_toe()
-  pass
-def evoke_zombie_sailor()
-  pass
-def evoke_agent_smith()
-  pass
-def evoke_milestone()
-  pass
+class Enemy:
+  def __init__(self, name, level = 1):
+    self.name = name
+    self.strength = level * random.randint(2, 4)
+  
+  def __str__(self):
+    return f"{self.name}({self.age})({self.strength})"
+
+
+def evoke_hangman():
+    pass
+def evoke_tic_tac_toe():
+    pass
+def evoke_zombie_sailor():
+    pass
+def evoke_agent_smith():
+    pass
+def evoke_milestone():
+    pass
 
 
 def create_enemy(number = 2):
