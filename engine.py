@@ -1,3 +1,17 @@
+# DO NOT MODIFY FUNCTIONS BELOW - part of a create enemy function!
+
+def evoke_hangman()
+  pass
+def evoke_tic_tac_toe()
+  pass
+def evoke_zombie_sailor()
+  pass
+def evoke_agent_smith()
+  pass
+def evoke_milestone()
+  pass
+
+
 def create_enemy(number = 2):
     '''
     Creates enemies in the given number.
