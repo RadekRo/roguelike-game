@@ -7,6 +7,14 @@ def create_enemy(number):
     pass
 
 def create_board(width, height): # to będzie robił Greg
+    board = []
+    board_fill = "~"
+    for i in range(0, height):
+        row = []
+        for j in range(0,width):
+            row.append(board_fill)
+        board.append(row)
+    return board
     '''
     Creates a new game board based on input parameters.
 
@@ -17,8 +25,8 @@ def create_board(width, height): # to będzie robił Greg
     Returns:
     list: Game board
     '''
-    pass
-
+   
+print(create_board(20, 20))
 
 def put_player_on_board(board, player):
     '''
