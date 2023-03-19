@@ -6,7 +6,7 @@ def create_enemy(number):
     '''
     pass
 
-def create_board(width, height):
+def create_board(width, height): # to będzie robił Greg
     '''
     Creates a new game board based on input parameters.
 
