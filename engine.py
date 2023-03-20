@@ -9,7 +9,7 @@ def create_enemy(number):
 def create_board(width, height): # to będzie robił Greg
     board = []
     board_fill = "~"
-    vertical_wall_sign = "|XX|"
+    vertical_wall_sign = "||"
     horizontal_wall_sign = "="
     door_sign = "D"
     for i in range(0, height):
@@ -36,7 +36,7 @@ def create_board(width, height): # to będzie robił Greg
     list: Game board
     '''
    
-print(create_board(3, 2))
+print(create_board(6, 7))
 
 def put_player_on_board(board, player):
     '''
