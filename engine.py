@@ -1,3 +1,5 @@
+import random
+
 def create_enemy(number):
     '''
     Creates enemies in the given number.
@@ -24,6 +26,7 @@ def create_board(width, height): # to będzie robił Greg
         horizontal_wall.append(horizontal_wall_sign)
     board.insert(0, horizontal_wall)
     board.append(horizontal_wall)
+    board[0][random.randint(1, height-1)] = door_sign  
     return board
     '''
     Creates a new game board based on input parameters.
@@ -36,7 +39,7 @@ def create_board(width, height): # to będzie robił Greg
     list: Game board
     '''
    
-print(create_board(6, 7))
+print(create_board(10, 10))
 
 def put_player_on_board(board, player):
     '''
