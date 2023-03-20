@@ -31,26 +31,26 @@ def create_enemy(level, number = 2):
     '''
     pass
 
-def create_board(width, height): # to będzie robił Greg
+def create_board(width, height): # Greg
     board = list()
-    board_fill = "~"
-    vertical_wall_sign = "||"
-    horizontal_wall_sign = "="
-    door_sign = "D"
-    for i in range(0, height):
-        row = []
-        row.insert(0, vertical_wall_sign)
-        for j in range(0,width):
+    board_fill = "~" # wypełninie planszy
+    vertical_wall_sign = "||" # znak pionowej ściany
+    horizontal_wall_sign = "=" # znak poziomej ściany
+    door_sign = "D" # znak drzwi
+    for i in range(height):
+        row = list()
+        row.insert(vertical_wall_sign) # wstawianie pionowej ściany
+        for j in range(width):
             row.append(board_fill)
-        row.append(vertical_wall_sign)
+        row.append(vertical_wall_sign) # wstawianie pionowej ściany
         board.append(row)
-    horizontal_wall = list()
-    for i in range(width + 2):
-        horizontal_wall.append(horizontal_wall_sign)
-    board.insert(0, horizontal_wall)
-    board.append(horizontal_wall)
-    board[0][random.randint(1, height-1)] = door_sign  
-    # kod
+    horizontal_wall = list() # wstawianie poziomej ściany
+    for i in range(width + 2): # wstawianie poziomej ściany
+        horizontal_wall.append(horizontal_wall_sign) # wstawianie poziomej ściany
+    board.insert(horizontal_wall) # wstawianie poziomej ściany
+    board.append(horizontal_wall) # wstawianie poziomej ściany
+    board[0][random.randint(1, height-1)] = door_sign  # wstawianie drzwi
+    # wstawiają się dwie pary drzwi zamiast jednych, do korekty
     return board
     '''
     Creates a new game board based on input parameters.
@@ -63,7 +63,45 @@ def create_board(width, height): # to będzie robił Greg
     list: Game board
     '''
    
-print(create_board(10, 10))
+def create_item(): # Greg
+    healing_items = {}
+    healing_items["MEDICNE"] = 10
+    healing_items["FOOD"] = 10
+    healing_items["DRINK"] = 10
+    healing_items["MANA"] = 10
+    
+    fight_items = dict()
+    
+    return healing_items
+
+print(create_item())
+
+    
+def print_statistics(statistics, name):
+    
+    print(f"\n TWOJE STATYSTYKI! {name}")
+    print("+---+---+---+---+---+\n")
+    for i, c in statistics.items():
+        print(f"{i:>9} |  {c:>4}\n")
+    print("+---+---+---+---+---+\n")
+        
+
+def create_player():
+    '''
+    Creates a 'player' dictionary for storing all player related informations - i.e. player icon, player position.
+    Fell free to extend this dictionary!
+
+    Returns:
+    dictionary
+    '''
+    name = input("Wpisz swoje miano: ").upper()
+    print(name)
+    print(f"Kim jesteć {name}? Rasy do wyboru [ELF, KRASNOLUD, MAG, RYCERZ]")
+    input("Wybierz rasę! ").upper()
+    stats = get_statistics()
+    print_statistics(stats, name)
+    pass
+
 
 def put_player_on_board(board, player):
     '''
