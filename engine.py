@@ -50,6 +50,7 @@ def create_board(width, height): # to będzie robił Greg
     board.insert(0, horizontal_wall)
     board.append(horizontal_wall)
     board[0][random.randint(1, height-1)] = door_sign  
+    # kod
     return board
     '''
     Creates a new game board based on input parameters.
