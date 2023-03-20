@@ -1,6 +1,6 @@
 import sys
 import os
-
+#komentarz
 
 def key_pressed():
     try:
