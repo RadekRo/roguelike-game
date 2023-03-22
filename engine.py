@@ -34,6 +34,7 @@ def evoke_agent_smith():
     return agent
 
 def evoke_milestone():
+    #TODO Boss instance, create when the main functions will be operative
     pass
 
 def create_enemy(level, number = 2):
