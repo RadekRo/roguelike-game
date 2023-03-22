@@ -33,24 +33,12 @@ def create_enemy(level, number = 2):
 
 def create_board(width, height): # Greg
     board = list()
-    board_fill = "~" # wypełninie planszy
-    vertical_wall_sign = "||" # znak pionowej ściany
-    horizontal_wall_sign = "=" # znak poziomej ściany
-    door_sign = "D" # znak drzwi
+    board_fill = "0"
     for i in range(height):
         row = list()
-        row.insert(vertical_wall_sign) # wstawianie pionowej ściany
         for j in range(width):
             row.append(board_fill)
-        row.append(vertical_wall_sign) # wstawianie pionowej ściany
         board.append(row)
-    horizontal_wall = list() # wstawianie poziomej ściany
-    for i in range(width + 2): # wstawianie poziomej ściany
-        horizontal_wall.append(horizontal_wall_sign) # wstawianie poziomej ściany
-    board.insert(horizontal_wall) # wstawianie poziomej ściany
-    board.append(horizontal_wall) # wstawianie poziomej ściany
-    board[0][random.randint(1, height-1)] = door_sign  # wstawianie drzwi
-    # wstawiają się dwie pary drzwi zamiast jednych, do korekty
     return board
     '''
     Creates a new game board based on input parameters.
@@ -63,6 +51,7 @@ def create_board(width, height): # Greg
     list: Game board
     '''
    
+
 def create_item(): # Greg
     healing_items = {}
     healing_items["MEDICNE"] = 10
