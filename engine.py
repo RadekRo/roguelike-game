@@ -43,7 +43,8 @@ def evoke_milestone():
 
 def create_enemy(level = 1, number = 2):
     print(evoke_hangman())
-    
+
+# calling function for testing purposes only.     
 create_enemy(30, 20)
 
 def create_board(width, height): # Greg
