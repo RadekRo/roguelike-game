@@ -9,6 +9,7 @@ class Enemy:
     self.type = type
     self.strength = level * random.randint(2, 4)
     self.health = level * random.randint(3, 5)
+
   
   def __str__(self):
     return f"Name: {self.name}\nMonster class: /{self.type}/\nStrength: {self.strength}\nHealth: {self.health}\nStarting position: {self. position}"
@@ -40,10 +41,10 @@ def evoke_milestone():
     #TODO Boss instance, create when the main functions will be operative
     pass
 
-def create_enemy(level = 1, number = 2):
+def create_enemy(width, height, level = 1, number = 2):
     print(evoke_hangman())
     
-create_enemy()
+create_enemy(30, 20)
 
 def create_board(width, height): # Greg
     board = list()
