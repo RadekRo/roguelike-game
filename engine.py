@@ -11,10 +11,13 @@ class Enemy:
     self.health = level * random.randint(3, 5)
   
   def __str__(self):
-    return f"Name: {self.name}\nMonster class: /{self.type}/\nStrength: {self.strength}\nHealth: {self.health}"
+    return f"Name: {self.name}\nMonster class: /{self.type}/\nStrength: {self.strength}\nHealth: {self.health}\nStarting position: {self. position}"
 
+def get_enemy_name():
+    return NAMES_BASE[random.randint(0, len(NAMES_BASE) - 1)]
+    
 def evoke_hangman():
-    name = NAMES_BASE[random.randint(0, len(NAMES_BASE) - 1)]
+    name = get_enemy_name()
     hangman = Enemy(name, "hangman")
     return hangman
 
@@ -24,7 +27,7 @@ def evoke_tic_tac_toe(mark):
     return tic_tac_toe
 
 def evoke_zombie_sailor():
-    name = NAMES_BASE[random.randint(0, len(NAMES_BASE) - 1)]
+    name = get_enemy_name()
     zombie_sailor = Enemy(name, "zombie-sailor", 3)
     return zombie_sailor
 
