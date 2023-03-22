@@ -9,9 +9,10 @@ class Enemy:
     self.type = type
     self.strength = level * random.randint(2, 4)
     self.health = level * random.randint(3, 5)
+    self.coords = list()
 
   def __str__(self):
-    return f"Name: {self.name}\nMonster class: /{self.type}/\nStrength: {self.strength}\nHealth: {self.health}\nStarting position: {self. position}"
+    return f"Name: {self.name}\nMonster class: /{self.type}/\nStrength: {self.strength}\nHealth: {self.health}\nStarting position: {self.coords}"
 
 def get_enemy_name():
     return NAMES_BASE[random.randint(0, len(NAMES_BASE) - 1)]
