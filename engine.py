@@ -1,39 +1,55 @@
 import random
 # DO NOT MODIFY FUNCTIONS AND CLASS BELOW - part of a create enemy function!
 
+NAMES_BASE = ["Janek", "Marcin", "Bartek", "Siergiej", "Sebastian", "Ryszard", "Jakub", "Marek"] 
+
 class Enemy:
-  def __init__(self, name, level = 1):
+  def __init__(self, name, type, level = 1):
     self.name = name
+    self.type = type
     self.strength = level * random.randint(2, 4)
     self.health = level * random.randint(3, 5)
-  
+    self.coords = list()
+
   def __str__(self):
-    return f"{self.name}(strength: {self.strength}, health: {self.health})"
+    return f"Name: {self.name}\nMonster class: /{self.type}/\nStrength: {self.strength}\nHealth: {self.health}\nStarting position: {self.coords}"
 
-
+def get_enemy_name():
+    return NAMES_BASE[random.randint(0, len(NAMES_BASE) - 1)]
+    
 def evoke_hangman():
-    pass
-def evoke_tic_tac_toe():
-    pass
+    name = get_enemy_name()
+    hangman = Enemy(name, "hangman")
+    return hangman
+
+def evoke_tic_tac_toe(mark):
+    name = mark
+    tic_tac_toe = Enemy(name, "tic-tac-toe", 2)
+    return tic_tac_toe
+
 def evoke_zombie_sailor():
-    pass
+    name = get_enemy_name()
+    zombie_sailor = Enemy(name, "zombie-sailor", 3)
+    return zombie_sailor
+
 def evoke_agent_smith():
-    pass
+    name = "Agent Smith"
+    agent = Enemy(name, "virus", 4)
+    return agent
+
 def evoke_milestone():
+    #TODO Boss instance, create when the main functions will be operative
     pass
 
+def create_enemy(level = 1, number = 2):
+    print(evoke_hangman())
 
-def create_enemy(level, number = 2):
-    '''
-    Creates enemies in the given number.
-    Each enemy has it's own characteristic.
-    Create at least 2 enemies
-    '''
-    pass
+# calling function for testing purposes only.     
+create_enemy(30, 20)
 
 def create_board(width, height): # Greg
     board = list()
-    board_fill = "0"
+    board_fill = 0
     for i in range(height):
         row = list()
         for j in range(width):
@@ -63,7 +79,6 @@ def create_item(): # Greg
     
     return healing_items
 
-print(create_item())
 
     
 def print_statistics(statistics, name):
