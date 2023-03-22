@@ -2,26 +2,36 @@ import random
 # DO NOT MODIFY FUNCTIONS AND CLASS BELOW - part of a create enemy function!
 
 class Enemy:
-  def __init__(self, name, level = 1):
+  def __init__(self, name, type, level = 1):
     self.name = name
+    self.type = type
     self.strength = level * random.randint(2, 4)
     self.health = level * random.randint(3, 5)
   
   def __str__(self):
     return f"{self.name}(strength: {self.strength}, health: {self.health})"
 
-
 def evoke_hangman():
-    pass
-def evoke_tic_tac_toe():
-    pass
+    convicts_names = ["Janek", "Marcin", "Bartek", "Siergiej", "Sebastian", "Ryszard", "Jakub", "Marek"] 
+    name = convicts_names[random.randint(0, len(convicts_names) - 1)]
+    hangman = Enemy(name, "hangman")
+    return hangman
+
+def evoke_tic_tac_toe(mark):
+    name = mark
+    tic_tac_toe = Enemy(name, "tic-tac-toe", 2)
+    return tic_tac_toe
+
 def evoke_zombie_sailor():
     pass
+
 def evoke_agent_smith():
-    pass
+    name = "Agent Smith"
+    agent = Enemy(name, "virus", 4)
+    return agent
+
 def evoke_milestone():
     pass
-
 
 def create_enemy(level, number = 2):
     '''
