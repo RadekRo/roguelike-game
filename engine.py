@@ -1,4 +1,5 @@
-import random
+import random, csv, os
+
 # DO NOT MODIFY FUNCTIONS AND CLASS BELOW - part of a create enemy function!
 
 NAMES_BASE = ["Janek", "Marcin", "Bartek", "Siergiej", "Sebastian", "Ryszard", "Jakub", "Marek"] 
@@ -45,7 +46,7 @@ def create_enemy(level = 1, number = 2):
     print(evoke_hangman())
 
 # calling function for testing purposes only.     
-create_enemy(30, 20)
+# create_enemy(30, 20)
 
 def create_board(width, height): # Greg
     board = list()
@@ -69,16 +70,58 @@ def create_board(width, height): # Greg
    
 
 def create_item(): # Greg
-    healing_items = {}
-    healing_items["MEDICNE"] = 10
-    healing_items["FOOD"] = 10
-    healing_items["DRINK"] = 10
-    healing_items["MANA"] = 10
+    inventory = {}
+    inventory["MEDICNE"] = 5
+    inventory["FOOD"] = 15
+    inventory["DRINK"] = 100
+    inventory["MANA"] = 10
+    return inventory
     
-    fight_items = dict()
-    
-    return healing_items
+def display_inventory(inventory):
+    for item in inventory:
+        print(f"{item}: {inventory[item]}")
 
+def add_to_inventory(inventory, added_items):
+    for item in added_items:
+        if item in inventory:
+            inventory[item] += 1
+        else:
+            inventory[item] = 1
+    print(inventory)
+
+def remove_from_inventory(inventory, removed_items):
+    for item in removed_items:
+        if item in inventory:
+            inventory[item] -= 1
+            if inventory[item] == 0:
+                del inventory[item]
+    return inventory
+
+def print_inventory_table(inventory, order):
+    print("""
+-----------------
+item name | count
+-----------------""")
+    order = order.replace(" ", "")
+    if order == "empty":
+        for item in inventory:
+            print(f"{item} | {inventory[item]}")
+    elif order == "count,asc":
+        sorted_dictionary = sorted(inventory.items(), key=select_value_of_key)
+        for item in sorted_dictionary:
+            print(f"{item[0]} | {item[1]}")
+    elif order == "count,desc":
+        sorted_dictionary = sorted(inventory.items(), key=select_value_of_key)
+        reversed_dictionary = sorted_dictionary[::-1]
+        for item in reversed_dictionary:
+            print(f"{item[0]} | {item[1]}")
+        
+def select_value_of_key(item):
+    return item[1]
+    
+inventory = create_item()
+display_inventory(inventory)
+print_inventory_table(inventory, "count,desc")
 
     
 def print_statistics(statistics, name):
