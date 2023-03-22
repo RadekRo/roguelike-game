@@ -33,7 +33,7 @@ def create_enemy(level, number = 2):
 
 def create_board(width, height): # Greg
     board = list()
-    board_fill = "0"
+    board_fill = 0
     for i in range(height):
         row = list()
         for j in range(width):
@@ -63,7 +63,6 @@ def create_item(): # Greg
     
     return healing_items
 
-print(create_item())
 
     
 def print_statistics(statistics, name):
