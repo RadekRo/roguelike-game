@@ -1,6 +1,8 @@
 import random
 # DO NOT MODIFY FUNCTIONS AND CLASS BELOW - part of a create enemy function!
 
+NAMES_BASE = ["Janek", "Marcin", "Bartek", "Siergiej", "Sebastian", "Ryszard", "Jakub", "Marek"] 
+
 class Enemy:
   def __init__(self, name, type, level = 1):
     self.name = name
@@ -12,8 +14,7 @@ class Enemy:
     return f"{self.name}(strength: {self.strength}, health: {self.health})"
 
 def evoke_hangman():
-    convicts_names = ["Janek", "Marcin", "Bartek", "Siergiej", "Sebastian", "Ryszard", "Jakub", "Marek"] 
-    name = convicts_names[random.randint(0, len(convicts_names) - 1)]
+    name = NAMES_BASE[random.randint(0, len(NAMES_BASE) - 1)]
     hangman = Enemy(name, "hangman")
     return hangman
 
@@ -23,7 +24,9 @@ def evoke_tic_tac_toe(mark):
     return tic_tac_toe
 
 def evoke_zombie_sailor():
-    pass
+    name = NAMES_BASE[random.randint(0, len(NAMES_BASE) - 1)]
+    zombie_sailor = Enemy(name, "zombie-sailor", 3)
+    return zombie_sailor
 
 def evoke_agent_smith():
     name = "Agent Smith"
