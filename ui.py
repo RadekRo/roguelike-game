@@ -1,14 +1,5 @@
 import engine
 
-board = engine.create_board(30, 20)
-
-
-#"\u2584" góra
-#wall = "\u2580"
-#"\u2588" boki
-
-
-
 def display_board(board):
     north_wall = "\u2584"*(len(board[0])+2)
     open_door(north_wall, 4) #zmiana rozmiaru drzwi
@@ -17,6 +8,8 @@ def display_board(board):
         for col in row:
             if col == 0:
                 insert = " "
+            else:
+                insert = col
             wall += insert
         wall += "\u2588"
         print(wall)
@@ -30,13 +23,6 @@ def open_door(wall, door_size = 4):
     wall = "".join(wall)    
     print(wall)
 
-
-
-     
-
-
-
-
     '''
     Displays complete game board on the screen
 
@@ -44,21 +30,3 @@ def open_door(wall, door_size = 4):
     Nothing
     '''
     pass
-
-display_board(board)
-
-
-LEVEL1 = (''' 
--------------------------------- 
-|                               |
-|                               |
-|                               |
-|                               |
-|                               |
-|                               |
--------------------------------- 
-''')
-               
-#def uidisplay_board():
-
-#def engine.put_player_on_board:

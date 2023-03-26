@@ -155,23 +155,23 @@ def export_inventory(inventory, filename = "inventory.csv"):
         print(f"You don't have permission creating file '{filename}'!")
 
 # testowanie funkcji importu i exportu, add i remove from inventory  
-inventory = {}
-import_inventory(inventory, "inventory.csv")
-print_inventory_table(inventory, "count,desc")
-inventory = create_item()
-print_inventory_table(inventory, "count,desc")
-add_to_inventory(inventory, added_items)
-print_inventory_table(inventory, "count,desc")
-export_inventory(inventory, "inventory.csv")
-print_inventory_table(inventory, "count,desc")
-remove_from_inventory(inventory, removed_items)
-print_inventory_table(inventory, "count,desc")
-export_inventory(inventory, "inventory.csv")
-import_inventory(inventory, "inventory.csv")
-print_inventory_table(inventory, "count,desc")
+# inventory = {}
+# import_inventory(inventory, "inventory.csv")
+# print_inventory_table(inventory, "count,desc")
+# inventory = create_item()
+# print_inventory_table(inventory, "count,desc")
+# add_to_inventory(inventory, added_items)
+# print_inventory_table(inventory, "count,desc")
+# export_inventory(inventory, "inventory.csv")
+# print_inventory_table(inventory, "count,desc")
+# remove_from_inventory(inventory, removed_items)
+# print_inventory_table(inventory, "count,desc")
+# export_inventory(inventory, "inventory.csv")
+# import_inventory(inventory, "inventory.csv")
+# print_inventory_table(inventory, "count,desc")
 
     
-def put_player_on_board(board, player_coordinates, player_icon):
+def put_player_on_board(board, player):
     '''
     Modifies the game board by placing the player icon at its coordinates.
 
@@ -182,4 +182,6 @@ def put_player_on_board(board, player_coordinates, player_icon):
     Returns:
     Nothing
     '''
-    pass
+    board[player["coordinates"][0]][player["coordinates"][1]] = player["icon"]
+    print(board[player["coordinates"][0]][player["coordinates"][1]])
+    return board
