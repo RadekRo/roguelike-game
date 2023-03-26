@@ -3,11 +3,18 @@ import util
 #import ui
 from textwrap import dedent
 
+BOARD_WIDTH = 30
+BOARD_HEIGHT = 20
+
 PLAYER_ICON = '@'
 PLAYER_START_X = 3
 PLAYER_START_Y = 3
 
-PLAYER_CLASSES = {"1": "KANDYDAT", "2": "STUDENT", "3": "MENTOR"}
+PLAYER_CLASSES = {
+                "1": "KANDYDAT", 
+                "2": "STUDENT", 
+                "3": "MENTOR"
+                 }
 CLASS_CHARACTERISTICS = { 
                         "KANDYDAT": 
                             {"strength": 5, "mana": 2, "health": 15},
@@ -17,9 +24,44 @@ CLASS_CHARACTERISTICS = {
                             {"strength": 3, "mana": 10, "health": 10}
                         }
 
-BOARD_WIDTH = 30
-BOARD_HEIGHT = 20
-   
+def show_player_class_description(user_name, user_class):
+    print(f"{user_name} - wybrałeś klasę: {user_class}")
+    match user_class:
+        case "KANDYDAT":
+            print(dedent('''
+                    To ambitny i pełen wigoru osobnik, 
+                    który nie może doczekać się nowych
+                    wyzwań!
+              
+                    Zawsze też w wolnej chwili wymyka się 
+                    do pobliskiej karczmy, aby posłuchać 
+                    nowych, ciekawych historii i wypić kufel 
+                    zimnego piwa!
+                    '''))
+        case "STUDENT":
+            print(dedent('''
+                    To już nieco doświadczony w bojach osobnik, 
+                    rozważniej dobierajacy ekwipunek i studiujący 
+                    dokładniej mapy niezdobytych jeszcze przez 
+                    niego terenów.
+            
+                    Pomimo jego roztropności, świat ciągle 
+                    go zadziwia i stawia przed nim nowe wyzwania.
+                    '''))
+        case "MENTOR":
+            print(dedent('''
+                    Jego liczne blizny świadczą o wielu bojach,
+                    o których chętnie opowiada, ucząc co gorliwszych, 
+                    by bardziej roztropnie stawiali swoje kroki w 
+                    świecie przygody. 
+              
+                    Pomimo wielkiej wiedzy i on czasem musi się 
+                    zatrzymać i pomedytować nad ogniskiem by 
+                    doznać inspiracji.
+                    '''))
+            
+    input("Naciśnij [ENTER], aby przejść dalej...")
+  
 # def draw_line(dots, spaces):
 #     dot = "."*dots
 #     space = " "*spaces
@@ -181,6 +223,9 @@ def create_player():
     player["strength"] = get_player_strength(player["class"])
     player["mana"] = get_player_mana(player["class"])
     player["health"] = get_player_health(player["class"])
+    util.clear_screen()
+
+    show_player_class_description(player["name"], player["class"])
 
     return player
 
