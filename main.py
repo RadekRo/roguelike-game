@@ -1,7 +1,7 @@
 import util
-import engine
-import ui
-
+#import engine
+#import ui
+import string
 
 PLAYER_ICON = '@'
 PLAYER_START_X = 3
@@ -112,6 +112,17 @@ BOARD_HEIGHT = 20
 # def HP_Player():
 #     pass
 
+def get_input_validation(user_input, type):
+    match type:
+        case "name":
+            return user_input.isalpha()
+        case _:
+            raise TypeError("Unknown input data!")    
+
+def get_user_input(announcement, type):
+    user_input = input(announcement)
+    user_input_validated = get_input_validation(user_input, type)
+    return user_input if user_input_validated else False
 
 def create_player():
     '''
@@ -121,9 +132,10 @@ def create_player():
     Returns:
     dictionary
     '''
-    player_data = False
-    while player_data == True:
-        None
+    player_name = False
+    while player_name == False:
+        player_name = get_user_input("Wpisz swoje miano: ", "name")
+        
 
     return dict()
 
@@ -151,18 +163,19 @@ def create_player():
 
 def main():
     player = create_player()
-    board = engine.create_board(BOARD_WIDTH, BOARD_HEIGHT)
+    #board = engine.create_board(BOARD_WIDTH, BOARD_HEIGHT)
     util.clear_screen()
-    is_running = True
-    while is_running:
-        engine.put_player_on_board(board, player)
-        ui.display_board(board)
-        key = util.key_pressed()
-        if key == 'q':
-            is_running = False
-        else:
-            pass
-        util.clear_screen()
+    print("User validated")
+    # is_running = True
+    # while is_running:
+    #     engine.put_player_on_board(board, player)
+    #     ui.display_board(board)
+    #     key = util.key_pressed()
+    #     if key == 'q':
+    #         is_running = False
+    #     else:
+    #         pass
+    #     util.clear_screen()
 
 
 if __name__ == '__main__':
