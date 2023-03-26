@@ -1,5 +1,6 @@
 import util
 from textwrap import dedent
+from graphics import get_game_header
 
 PLAYER_CLASSES = {
                 "1": "KANDYDAT", 
@@ -16,7 +17,7 @@ CLASS_CHARACTERISTICS = {
                         }
 
 def show_player_class_description(user_name, user_class):
-    print(f"{user_name} - wybrałeś klasę: {user_class}")
+    print(f"\n\033[3m{user_name} - wybrałeś klasę: {user_class}")
     match user_class:
         case "KANDYDAT":
             print(dedent('''
@@ -48,10 +49,12 @@ def show_player_class_description(user_name, user_class):
               
                     Pomimo wielkiej wiedzy i on czasem musi się 
                     zatrzymać i pomedytować nad ogniskiem by 
-                    doznać inspiracji.
-                    '''))
-            
-    input("Naciśnij [ENTER], aby przejść dalej...")
+                    doznać inspiracji.'''))
+    
+    input(dedent('''
+    Twoja przygoda właśnie się zaczyna...\u001B[0m
+
+    \033[1;36mNaciśnij [ENTER], aby przejść dalej...\u001B[0m'''))
   
 # def draw_line(dots, spaces):
 #     dot = "."*dots
@@ -97,23 +100,27 @@ def create_player(player_icon, player_starting_coordinates):
     
     player = dict()
     player_name = player_class = False
-
+    
+    get_game_header()
     while player_name == False:
         player_name = get_user_input("Wpisz swoje miano: ", "name")
         not player_name and print("Spróbuj ponownie! Wprowadzaj wyłącznie litery, bez odstępów.") 
     player["name"] = player_name.upper()
     util.clear_screen()
     
+    get_game_header()
     while player_class == False:
         player_class = get_user_input(dedent(f'''
         Wybierz klasę postaci:
+        
         (1) {PLAYER_CLASSES["1"]} 
-        \t[siła: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["1"]]["strength"]}, mana: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["1"]]["mana"]}, zdrowie: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["1"]]["health"]}]
+            [siła: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["1"]]["strength"]}, mana: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["1"]]["mana"]}, zdrowie: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["1"]]["health"]}]
         (2) {PLAYER_CLASSES["2"]} 
-        \t[siła: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["2"]]["strength"]}, mana: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["2"]]["mana"]}, zdrowie: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["2"]]["health"]}]
+            [siła: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["2"]]["strength"]}, mana: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["2"]]["mana"]}, zdrowie: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["2"]]["health"]}]
         (3) {PLAYER_CLASSES["3"]}
-        \t[siła: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["3"]]["strength"]}, mana: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["3"]]["mana"]}, zdrowie: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["3"]]["health"]}]
-        Kim będziesz {player["name"]} (1-3)? '''), "class")
+            [siła: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["3"]]["strength"]}, mana: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["3"]]["mana"]}, zdrowie: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["3"]]["health"]}]
+        
+        Kim jesteś {player["name"]} (1-3)? '''), "class")
         not player_class and print("Spróbuj ponownie! Pamiętaj, wprowadź tylko liczbę od 1 do 3!")
     player["class"] = get_player_class(player_class)
     player["strength"] = get_player_strength(player["class"])
@@ -123,6 +130,7 @@ def create_player(player_icon, player_starting_coordinates):
     player["icon"] = player_icon
     util.clear_screen()
 
+    get_game_header()
     show_player_class_description(player["name"], player["class"])
 
     return player
