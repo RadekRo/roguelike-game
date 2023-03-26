@@ -171,32 +171,6 @@ import_inventory(inventory, "inventory.csv")
 print_inventory_table(inventory, "count,desc")
 
     
-def print_statistics(statistics, name):
-    
-    print(f"\n TWOJE STATYSTYKI! {name}")
-    print("+---+---+---+---+---+\n")
-    for i, c in statistics.items():
-        print(f"{i:>9} |  {c:>4}\n")
-    print("+---+---+---+---+---+\n")
-        
-
-def create_player():
-    '''
-    Creates a 'player' dictionary for storing all player related informations - i.e. player icon, player position.
-    Fell free to extend this dictionary!
-
-    Returns:
-    dictionary
-    '''
-    name = input("Wpisz swoje miano: ").upper()
-    print(name)
-    print(f"Kim jesteć {name}? Rasy do wyboru [ELF, KRASNOLUD, MAG, RYCERZ]")
-    input("Wybierz rasę! ").upper()
-    stats = get_statistics()
-    print_statistics(stats, name)
-    pass
-
-
 def put_player_on_board(board, player):
     '''
     Modifies the game board by placing the player icon at its coordinates.
