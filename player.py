@@ -86,7 +86,7 @@ def get_player_health(player_class):
     return CLASS_CHARACTERISTICS[player_class]["health"]
 
 
-def create_player():
+def create_player(player_icon, player_starting_coordinates):
     '''
     Creates a 'player' dictionary for storing all player related informations - i.e. player icon, player position.
     Fell free to extend this dictionary!
@@ -118,6 +118,8 @@ def create_player():
     player["strength"] = get_player_strength(player["class"])
     player["mana"] = get_player_mana(player["class"])
     player["health"] = get_player_health(player["class"])
+    player["coordinates"] = player_starting_coordinates
+    player["icon"] = player_icon
     util.clear_screen()
 
     show_player_class_description(player["name"], player["class"])

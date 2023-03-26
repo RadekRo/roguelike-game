@@ -171,7 +171,7 @@ import_inventory(inventory, "inventory.csv")
 print_inventory_table(inventory, "count,desc")
 
     
-def put_player_on_board(board, player):
+def put_player_on_board(board, player_coordinates, player_icon):
     '''
     Modifies the game board by placing the player icon at its coordinates.
 
