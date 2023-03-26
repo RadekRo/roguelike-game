@@ -132,10 +132,10 @@ def create_player():
     Returns:
     dictionary
     '''
-    player_name = False
+    player_name = player_class = False
     while player_name == False:
         player_name = get_user_input("Wpisz swoje miano: ", "name")
-        
+        not player_name and print("Błąd! Wprowadź tylko litery, bez odstępów!") 
 
     return dict()
 
