@@ -18,7 +18,7 @@ def main():
     is_running = True
     while is_running:
         board = put_player_on_board(board, player)
-        display_board(board)
+        display_board(board, "closed")
         is_running = False
         # key = util.key_pressed()
         # if key == 'q':
