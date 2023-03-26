@@ -4,7 +4,7 @@ from engine import create_board, put_player_on_board
 from ui import display_board
 
 BOARD_WIDTH = 30
-BOARD_HEIGHT = 20
+BOARD_HEIGHT = 10
 
 PLAYER_ICON = '@'
 PLAYER_START_X = 3
