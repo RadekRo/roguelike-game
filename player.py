@@ -128,6 +128,7 @@ def create_player(player_icon, player_starting_coordinates):
     player["health"] = get_player_health(player["class"])
     player["coordinates"] = player_starting_coordinates
     player["icon"] = player_icon
+    player["items"] = dict()
     util.clear_screen()
 
     get_game_header()
