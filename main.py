@@ -132,12 +132,13 @@ def create_player():
     Returns:
     dictionary
     '''
+    player = dict()
     player_name = player_class = False
     while player_name == False:
         player_name = get_user_input("Wpisz swoje miano: ", "name")
         not player_name and print("Spróbuj ponownie! Wprowadź tylko litery, bez odstępów.") 
-
-    return dict()
+    player["name"] = player_name
+    return player
 
     # run = True
     
@@ -165,7 +166,7 @@ def main():
     player = create_player()
     #board = engine.create_board(BOARD_WIDTH, BOARD_HEIGHT)
     util.clear_screen()
-    print("User validated")
+    print(f"User validated: {player}")
     # is_running = True
     # while is_running:
     #     engine.put_player_on_board(board, player)
