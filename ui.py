@@ -1,5 +1,3 @@
-import engine
-
 def display_board(board):
     north_wall = "\u2584"*(len(board[0])+2)
     open_door(north_wall, 4) #zmiana rozmiaru drzwi

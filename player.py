@@ -1,7 +1,6 @@
 import util
 from textwrap import dedent
 
-
 PLAYER_CLASSES = {
                 "1": "KANDYDAT", 
                 "2": "STUDENT", 
@@ -64,7 +63,10 @@ def get_input_validation(user_input, type):
         case "name":
             return user_input.isalpha()
         case "class":
-            return int(user_input) > 0 and int(user_input) < 4
+            try:
+                return int(user_input) > 0 and int(user_input) < 4
+            except:
+                raise TypeError("Game process ERROR. You've pressed an empty ENTER!")
         case _:
             raise TypeError("Unknown input data!")    
 
@@ -85,15 +87,8 @@ def get_player_mana(player_class):
 def get_player_health(player_class):
     return CLASS_CHARACTERISTICS[player_class]["health"]
 
-
 def create_player(player_icon, player_starting_coordinates):
-    '''
-    Creates a 'player' dictionary for storing all player related informations - i.e. player icon, player position.
-    Fell free to extend this dictionary!
-
-    Returns:
-    dictionary
-    '''
+    
     player = dict()
     player_name = player_class = False
 
