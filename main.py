@@ -7,6 +7,16 @@ PLAYER_ICON = '@'
 PLAYER_START_X = 3
 PLAYER_START_Y = 3
 
+PLAYER_CLASSES = {"1": "KANDYDAT", "2": "STUDENT", "3": "MENTOR"}
+CLASS_CHARACTERISTICS = { 
+                        "KANDYDAT": 
+                            {"strength": 5, "mana": 2, "health": 15},
+                        "STUDENT":
+                            {"strength": 4, "mana": 5, "health": 20},
+                        "MENTOR":
+                            {"strength": 3, "mana": 10, "health": 10}
+                        }
+
 BOARD_WIDTH = 30
 BOARD_HEIGHT = 20
    
@@ -126,6 +136,19 @@ def get_user_input(announcement, type):
     user_input_validated = get_input_validation(user_input, type)
     return user_input if user_input_validated else False
 
+def get_player_class(player_class):
+    return PLAYER_CLASSES[player_class]
+
+def get_player_strength(player_class):
+    return CLASS_CHARACTERISTICS[player_class]["strength"]
+
+def get_player_mana(player_class):
+    return CLASS_CHARACTERISTICS[player_class]["mana"]
+
+def get_player_health(player_class):
+    return CLASS_CHARACTERISTICS[player_class]["health"]
+
+
 def create_player():
     '''
     Creates a 'player' dictionary for storing all player related informations - i.e. player icon, player position.
@@ -140,18 +163,25 @@ def create_player():
     while player_name == False:
         player_name = get_user_input("Wpisz swoje miano: ", "name")
         not player_name and print("Spróbuj ponownie! Wprowadzaj wyłącznie litery, bez odstępów.") 
-    player["name"] = player_name
+    player["name"] = player_name.upper()
     util.clear_screen()
     
     while player_class == False:
         player_class = get_user_input(dedent(f'''
         Wybierz klasę postaci:
-        (1) Kandydat
-        (2) Student
-        (3) Mentor
-        Kim będziesz {player["name"]}? '''), "class")
+        (1) {PLAYER_CLASSES["1"]} 
+        \t[siła: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["1"]]["strength"]}, mana: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["1"]]["mana"]}, zdrowie: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["1"]]["health"]}]
+        (2) {PLAYER_CLASSES["2"]} 
+        \t[siła: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["2"]]["strength"]}, mana: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["2"]]["mana"]}, zdrowie: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["2"]]["health"]}]
+        (3) {PLAYER_CLASSES["3"]}
+        \t[siła: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["3"]]["strength"]}, mana: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["3"]]["mana"]}, zdrowie: {CLASS_CHARACTERISTICS[PLAYER_CLASSES["3"]]["health"]}]
+        Kim będziesz {player["name"]} (1-3)? '''), "class")
         not player_class and print("Spróbuj ponownie! Pamiętaj, wprowadź tylko liczbę od 1 do 3!")
-    player["class"] = player_class
+    player["class"] = get_player_class(player_class)
+    player["strength"] = get_player_strength(player["class"])
+    player["mana"] = get_player_mana(player["class"])
+    player["health"] = get_player_health(player["class"])
+
     return player
 
     # run = True
