@@ -2,7 +2,7 @@ import util
 from player import create_player
 from engine import create_board, put_player_on_board
 from ui import display_board
-from graphics import get_game_header
+from graphics import get_game_header, get_level_annoucement, show_game_intro
 
 BOARD_WIDTH = 40
 BOARD_HEIGHT = 10
@@ -17,11 +17,21 @@ def main():
     board = create_board(BOARD_WIDTH, BOARD_HEIGHT)
     util.clear_screen()
     #print(f"User validated: {player}")
+    
     is_running = True
+    level = 1
+    door_status = "closed"
+    
     while is_running:
         get_game_header()
-        door_status = "closed"
+        level = 1
         board = put_player_on_board(board, player)
+        show_game_intro()
+        util.clear_screen()
+        get_game_header()
+        get_level_annoucement(1)
+        util.clear_screen()
+        get_game_header()
         display_board(board, door_status)
         is_running = False
         # key = util.key_pressed()
