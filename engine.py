@@ -172,16 +172,5 @@ def export_inventory(inventory, filename = "inventory.csv"):
 
     
 def put_player_on_board(board, player):
-    '''
-    Modifies the game board by placing the player icon at its coordinates.
-
-    Args:
-    list: The game board
-    dictionary: The player information containing the icon and coordinates
-
-    Returns:
-    Nothing
-    '''
     board[player["coordinates"][0]][player["coordinates"][1]] = player["icon"]
-    print(board[player["coordinates"][0]][player["coordinates"][1]])
     return board

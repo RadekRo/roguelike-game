@@ -13,18 +13,10 @@ def display_board(board):
         print(wall)
     print("\u2580"*(len(board[0])+2))
 
+
 def open_door(wall, door_size = 4):
     wall = list(wall)
     half_wall = int(len(wall)  / 2) - int(door_size/2)
     for i in range(half_wall, half_wall + door_size):
         wall[i] = " "
     wall = "".join(wall)    
-    print(wall)
-
-    '''
-    Displays complete game board on the screen
-
-    Returns:
-    Nothing
-    '''
-    pass

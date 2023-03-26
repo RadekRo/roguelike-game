@@ -70,22 +70,28 @@ def get_input_validation(user_input, type):
         case _:
             raise TypeError("Unknown input data!")    
 
+
 def get_user_input(announcement, type):
     user_input = input(announcement)
     user_input_validated = get_input_validation(user_input, type)
     return user_input if user_input_validated else False
 
+
 def get_player_class(player_class):
     return PLAYER_CLASSES[player_class]
+
 
 def get_player_strength(player_class):
     return CLASS_CHARACTERISTICS[player_class]["strength"]
 
+
 def get_player_mana(player_class):
     return CLASS_CHARACTERISTICS[player_class]["mana"]
 
+
 def get_player_health(player_class):
     return CLASS_CHARACTERISTICS[player_class]["health"]
+
 
 def create_player(player_icon, player_starting_coordinates):
     
