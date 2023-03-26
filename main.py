@@ -131,14 +131,14 @@ def create_player():
             print(name)
         util.clear_screen()
         draw_line(30,0)
-        print(f"Kim jesteć {name}? Klasy do wyboru [KANDYDAT, STUDENT, MENTOR]")
+        print(f"Kim jesteś {name}? Klasy do wyboru [KANDYDAT, STUDENT, MENTOR]")
         print("Możesz wpisać pełną nazwę lub, tylko pierwszą literę.")
         name_class = input("Wybierz Klasę! ").upper()
         util.clear_screen()
         stats = player_stats(name_class)
-        print(player_class(name_class, name, stats))
-    else:
-        run = False
+        player_class(name_class, name, stats) #print funkcji, która sama robi printa zwróci None poza tym, co ma być wydrukowane
+    #else:
+    #    run = False 
      
 
 
