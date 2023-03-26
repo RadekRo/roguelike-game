@@ -1,7 +1,7 @@
 import util
 #import engine
 #import ui
-import string
+from textwrap import dedent
 
 PLAYER_ICON = '@'
 PLAYER_START_X = 3
@@ -134,10 +134,17 @@ def create_player():
     '''
     player = dict()
     player_name = player_class = False
+
     while player_name == False:
         player_name = get_user_input("Wpisz swoje miano: ", "name")
-        not player_name and print("Spróbuj ponownie! Wprowadź tylko litery, bez odstępów.") 
+        not player_name and print("Spróbuj ponownie! Wprowadzaj wyłącznie litery, bez odstępów.") 
     player["name"] = player_name
+    util.clear_screen()
+    
+    while player_class == False:
+        player_class = get_user_input('''
+        Wybierz klasę''')
+
     return player
 
     # run = True
