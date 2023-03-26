@@ -126,13 +126,13 @@ def create_player():
         draw_line(15,0)
         name = str(input("Wpisz swoje miano: ").upper())
         if not all(x.isalpha or x == "" for x in  name):
-            print("Spróbój ponownie.")
+            print("Spróbuj ponownie.")
         else:
             print(name)
         util.clear_screen()
         draw_line(30,0)
-        print(f"Kim jesteć {name}? Klasy do wyboru [KANDYDAT, StUDENT, MENTOR]")
-        print("Możesz wpisać pęłną nazwę lub, tylko pierwszą literę.")
+        print(f"Kim jesteć {name}? Klasy do wyboru [KANDYDAT, STUDENT, MENTOR]")
+        print("Możesz wpisać pełną nazwę lub, tylko pierwszą literę.")
         name_class = input("Wybierz Klasę! ").upper()
         util.clear_screen()
         stats = player_stats(name_class)
@@ -145,13 +145,11 @@ def create_player():
 def main():
     player = create_player()
     board = engine.create_board(BOARD_WIDTH, BOARD_HEIGHT)
-    print(board)
     util.clear_screen()
     is_running = True
     while is_running:
         engine.put_player_on_board(board, player)
         ui.display_board(board)
-
         key = util.key_pressed()
         if key == 'q':
             is_running = False
