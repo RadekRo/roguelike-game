@@ -17,8 +17,9 @@ def main():
     #print(f"User validated: {player}")
     is_running = True
     while is_running:
+        door_status = "closed"
         board = put_player_on_board(board, player)
-        display_board(board, "closed")
+        display_board(board, door_status)
         is_running = False
         # key = util.key_pressed()
         # if key == 'q':

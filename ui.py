@@ -1,6 +1,6 @@
 def display_board(board, door_status = "closed"):
     wall = "\u2584" * (len(board[0])+2)
-    wall = open_door(wall, 4) if door_status == "open" else close_door(wall, 4)
+    wall = open_door(wall, 6) if door_status == "open" else close_door(wall, 6)
     for row in board:
         wall += "\n\u2588"
         for col in row:
