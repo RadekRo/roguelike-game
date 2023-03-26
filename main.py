@@ -116,6 +116,8 @@ def get_input_validation(user_input, type):
     match type:
         case "name":
             return user_input.isalpha()
+        case "class":
+            return int(user_input) > 0 and int(user_input) < 4
         case _:
             raise TypeError("Unknown input data!")    
 
@@ -142,9 +144,14 @@ def create_player():
     util.clear_screen()
     
     while player_class == False:
-        player_class = get_user_input('''
-        Wybierz klasę''')
-
+        player_class = get_user_input(dedent(f'''
+        Wybierz klasę postaci:
+        (1) Kandydat
+        (2) Student
+        (3) Mentor
+        Kim będziesz {player["name"]}? '''), "class")
+        not player_class and print("Spróbuj ponownie! Pamiętaj, wprowadź tylko liczbę od 1 do 3!")
+    player["class"] = player_class
     return player
 
     # run = True
