@@ -125,6 +125,7 @@ def create_player():
     while player_data == True:
         None
 
+    return dict()
 
     # run = True
     
