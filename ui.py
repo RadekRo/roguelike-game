@@ -1,8 +1,8 @@
 def display_board(board):
-    north_wall = "\u2584"*(len(board[0])+2)
-    open_door(north_wall, 4) #zmiana rozmiaru drzwi
+    wall = "\u2584" * (len(board[0])+2)
+    #open_door(north_wall, 4) #zmiana rozmiaru drzwi
     for row in board:
-        wall = "\u2588"
+        wall += "\n\u2588"
         for col in row:
             if col == 0:
                 insert = " "
@@ -10,7 +10,7 @@ def display_board(board):
                 insert = col
             wall += insert
         wall += "\u2588"
-        print(wall)
+    print(wall)
     print("\u2580"*(len(board[0])+2))
 
 

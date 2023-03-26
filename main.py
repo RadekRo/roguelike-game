@@ -19,12 +19,13 @@ def main():
     while is_running:
         board = put_player_on_board(board, player)
         display_board(board)
-        key = util.key_pressed()
-        if key == 'q':
-            is_running = False
-        else:
-            pass
-    util.clear_screen()
+        is_running = False
+        # key = util.key_pressed()
+        # if key == 'q':
+        #     is_running = False
+        # else:
+        #     pass
+    #util.clear_screen()
     print("GAME OVER")
 
 
