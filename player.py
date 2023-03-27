@@ -1,6 +1,7 @@
 import util
 from textwrap import dedent
 from graphics import get_game_header
+from inventory import create_player_inventory
 
 PLAYER_CLASSES = {
                 "1": "KANDYDAT", 

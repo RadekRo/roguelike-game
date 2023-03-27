@@ -3,6 +3,7 @@ from player import create_player
 from engine import create_board, put_player_on_board
 from ui import display_board
 from graphics import get_game_header, get_level_annoucement, show_game_intro
+from inventory import create_items, display_items_on_board
 
 BOARD_WIDTH = 40
 BOARD_HEIGHT = 10
@@ -33,6 +34,8 @@ def main():
         util.clear_screen()
         get_game_header()
         display_board(board, door_status)
+        items = create_items(level)
+        board = display_items_on_board(board, items)
         is_running = False
         # key = util.key_pressed()
         # if key == 'q':
