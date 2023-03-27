@@ -7,9 +7,9 @@ from graphics import get_game_header, get_level_annoucement, show_game_intro
 BOARD_WIDTH = 40
 BOARD_HEIGHT = 10
 
-PLAYER_ICON = '@'
-PLAYER_START_X = 3
-PLAYER_START_Y = 3
+PLAYER_ICON = '\033[1;36m' + '@' + '\033[0m'
+PLAYER_START_X = 9
+PLAYER_START_Y = 19
 
 def main():
     util.clear_screen()
