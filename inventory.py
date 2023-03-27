@@ -6,12 +6,6 @@ from ui import display_board
 BOARD_WIDTH = 40
 BOARD_HEIGHT = 10
 
-# jak połączyć to co zbieramy z planszy z wartościami w inventory? (add i remove?)
-
-# added_items = "kupa", "kupa", "miecz", "łuk"
-added_items = {"kupa": 13, "MANA": 3, "strzały": 5}
-removed_items = {"kupa": 12, "MANA": 1, "strzały": 5}
-
 def create_items(level): # Greg
     # to jest inwentarz przedmiotów które można zbierać na planszy
     items = dict()
@@ -27,22 +21,35 @@ def create_items(level): # Greg
 def add_coordinates_to_items(items):
     items_with_coordinates = dict()
     for key in items:
-        x = random.randint(1, 10)
-        y = random.randint(1, 10)
+        x = random.randint(1, BOARD_HEIGHT-1)
+        y = random.randint(1, BOARD_WIDTH-1)
         items_with_coordinates[key] = (x, y)
         # jak wykluczyć powtórzenia koordynat? 
         # for key in items_with_coordinates:
         #   items_with_coordinates.values() - porównywać czy w liście się powtarzają?
     return items_with_coordinates
 
-def display_items_on_board(board, items_with_coordinates):
+def put_items_on_board(board, items_with_coordinates):
     for key in items_with_coordinates:
         board[items_with_coordinates[key][0]][items_with_coordinates[key][1]] = key[0]
     return board
 
-def put_player_on_board(board, player):
-    board[player["coordinates"][0]][player["coordinates"][1]] = player["icon"]
-    return board
+def get_items_on_board(board, level):
+    items = create_items(level)
+    items_with_coordinates = add_coordinates_to_items(items)
+    board = put_items_on_board(board, items_with_coordinates)
+
+
+# jak połączyć to co zbieramy z planszy z wartościami w inventory? (add i remove?)
+def player_inventory(player_name):
+    player_inventory = dict()
+    
+
+
+
+
+added_items = {"kupa": 13, "MANA": 3, "strzały": 5}
+removed_items = {"kupa": 12, "MANA": 1, "strzały": 5}
 
 def display_inventory(inventory):
     for item in inventory:
@@ -116,11 +123,11 @@ def export_inventory(inventory, filename = "inventory.csv"):
         print(f"You don't have permission creating file '{filename}'!")
 
 door_status = "closed"
-items = create_items(2)
+items = create_items(3)
 print(items)
 items_with_coordinates = add_coordinates_to_items(items)
 print(items_with_coordinates)
 print(items_with_coordinates.values())
 board = create_board(BOARD_WIDTH, BOARD_HEIGHT)
-board = display_items_on_board(board, items_with_coordinates)
+board = put_items_on_board(board, items_with_coordinates)
 display_board(board, door_status)
