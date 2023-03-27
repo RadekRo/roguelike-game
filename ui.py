@@ -1,3 +1,13 @@
+def display_game_info(player):
+    mana = player["mana"] * '\u2728'
+    health = player["health"] * '\u2764 '
+    print(f'''SIŁ: {player["strength"]}
+MAN: {mana}
+ZDR: {health} 
+naciśnij [i] aby, obejrzeć ekwipunek''')
+
+
+
 def display_board(board, door_status = "closed"):
     wall = "\u2584" * (len(board[0])+2)
     wall = open_door(wall, 6) if door_status == "open" else close_door(wall, 6)
