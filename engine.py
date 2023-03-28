@@ -16,7 +16,7 @@ def put_player_on_board(board, player):
     return board
 
 # testing values and print
-player = {"coordinations": [0, 3]}
+player = {"icon": "@", "coordinations": [0, 3]}
 board = [[0] * 5] * 5
 
 def get_board_edges(board):
@@ -26,7 +26,7 @@ def get_board_edges(board):
     return upper_edge, lower_edge, left_edge, right_edge
 
 
-def move_player(player, board):
+def move_player(key, player, board):
     
     player_x, player_y = player["coordinations"]
     key = key_pressed()
@@ -44,13 +44,12 @@ def move_player(player, board):
             print("inventory opened")
         case _:
             print("unknown command")
-
+    print(player)
     return player, new_player_position
 
 #testing function call
-is_movement_safe = False
-while is_movement_safe == False:
-    player, is_movement_safe = move_player(player, board)
-    print ("Zdrowo przydzwoniłeś(aś) w ścianę. Tracisz 1 punkt życia!") if not is_movement_safe else print ("Player moved")
+# player, is_movement_safe = move_player(player, board)
+# print (f"Zdrowo przydzwoniłeś(aś) w ścianę. Tracisz 1 punkt życia!") if not is_movement_safe else None
+# print(player["coordinations"])
         
 
