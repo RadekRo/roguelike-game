@@ -15,9 +15,9 @@ def put_player_on_board(board, player):
     board[player["coordinates"][0]][player["coordinates"][1]] = player["icon"]
     return board
 
-player = {"coordinations": [3, 3]}
+# testing values and print
+player = {"coordinations": [0, 3]}
 board = [[0] * 5] * 5
-print(board)
 
 def get_board_edges(board):
     left_edge = upper_edge = 0
@@ -27,25 +27,30 @@ def get_board_edges(board):
 
 
 def move_player(player, board):
-    while True:
-        key = key_pressed()
-        current_player_position = player["coordinations"]
-        upper_edge, lower_edge, left_edge, right_edge = get_board_edges(board) 
-        print(upper_edge, lower_edge, left_edge, right_edge)
-        match key:
-            case "w":
-                new_player_position = [current_player_position[0] - 1, current_player_position[1]]
-                print(f"player moves up. before: {current_player_position} next: {new_player_position}")
-            case "s":
-                print("player moved down")
-            case "a":
-                print("player moved left")
-            case "d":
-                print("player moved right")
-            case "i":
-                print("inventory opened")
-            case _:
-                print("unknown command")
-                break
-move_player(player, board)
+    
+    player_x, player_y = player["coordinations"]
+    key = key_pressed()
+    upper_edge, lower_edge, left_edge, right_edge = get_board_edges(board) 
+    match key:
+        case "w":
+            new_player_position = [player_x - 1, player_y] if player_x - 1 >= upper_edge else False
+        case "s":                
+            new_player_position = [player_x + 1, player_y] if player_x + 1 <= lower_edge else False
+        case "a":
+            new_player_position = [player_x, player_y - 1] if player_y - 1 >= left_edge else False
+        case "d":
+            new_player_position = [player_x, player_y + 1] if player_y + 1 <= right_edge else False
+        case "i":
+            print("inventory opened")
+        case _:
+            print("unknown command")
+
+    return player, new_player_position
+
+#testing function call
+is_movement_safe = False
+while is_movement_safe == False:
+    player, is_movement_safe = move_player(player, board)
+    print ("Zdrowo przydzwoniłeś(aś) w ścianę. Tracisz 1 punkt życia!") if not is_movement_safe else print ("Player moved")
+        
 
