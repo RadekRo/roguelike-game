@@ -36,6 +36,7 @@ def main():
         get_level_annoucement(1)
         current_level = "active"
         wall_hit = False
+        get_items_on_board(board, level)
         while current_level == "active":
             util.clear_screen()
             get_game_header()
