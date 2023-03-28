@@ -40,6 +40,7 @@ def move_player(key, player, board):
                 board[player_x][player_y] = 0    
             else:
                 player_hits_the_wall = True
+                player["health"] -= 1
         case "s":    
             if player_x + 1 <= lower_edge - 1:
                 player["coordinates"] = [player_x + 1, player_y]
@@ -47,6 +48,7 @@ def move_player(key, player, board):
                 board[player_x][player_y] = 0                    
             else:
                 player_hits_the_wall = True
+                player["health"] -= 1
         case "a":
             if player_y - 1 >= left_edge:
                 player["coordinates"] = [player_x, player_y - 1]
@@ -54,6 +56,7 @@ def move_player(key, player, board):
                 board[player_x][player_y] = 0
             else:
                 player_hits_the_wall = True
+                player["health"] -= 1
         case "d":
             if player_y + 1 <= right_edge - 1:
                 player["coordinates"] = [player_x, player_y + 1]
@@ -61,6 +64,7 @@ def move_player(key, player, board):
                 board[player_x][player_y] = 0
             else:
                 player_hits_the_wall = True
+                player["health"] -= 1
         case _:
             print("unknown command")
 
