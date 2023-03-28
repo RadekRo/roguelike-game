@@ -15,9 +15,6 @@ def put_player_on_board(board, player):
     board[player["coordinates"][0]][player["coordinates"][1]] = player["icon"]
     return board
 
-# testing values and print
-player = {"icon": "@", "coordinations": [0, 3]}
-board = [[0] * 5] * 5
 
 def get_board_edges(board):
     left_edge = upper_edge = 0

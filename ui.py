@@ -4,7 +4,7 @@ def display_game_info(player):
     print(f'''SIŁ: {player["strength"]}
 MAN: {mana}
 ZDR: {health} 
-naciśnij [i] aby, obejrzeć ekwipunek''')
+naciśnij [i], aby pokazać/ukryć ekwipunek''')
 
 
 def display_board(board, door_status = "closed"):
