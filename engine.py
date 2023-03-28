@@ -16,11 +16,22 @@ def put_player_on_board(board, player):
     return board
 
 player = {"coordinations": [3, 3]}
- 
-def move_player(player):
+board = [[0] * 5] * 5
+print(board)
+
+def get_board_edges(board):
+    left_edge = upper_edge = 0
+    right_edge = len(board[0])
+    lower_edge = len(board)
+    return upper_edge, lower_edge, left_edge, right_edge
+
+
+def move_player(player, board):
     while True:
         key = key_pressed()
         current_player_position = player["coordinations"]
+        upper_edge, lower_edge, left_edge, right_edge = get_board_edges(board) 
+        print(upper_edge, lower_edge, left_edge, right_edge)
         match key:
             case "w":
                 new_player_position = [current_player_position[0] - 1, current_player_position[1]]
@@ -36,5 +47,5 @@ def move_player(player):
             case _:
                 print("unknown command")
                 break
-move_player(player)
+move_player(player, board)
 
