@@ -1,54 +1,6 @@
-import random, csv, os
+from util import key_pressed
 
-# DO NOT MODIFY FUNCTIONS AND CLASS BELOW - part of a create enemy function!
-
-NAMES_BASE = ["Janek", "Marcin", "Bartek", "Siergiej", "Sebastian", "Ryszard", "Jakub", "Marek"] 
-
-class Enemy:
-  def __init__(self, name, type, level = 1):
-    self.name = name
-    self.type = type
-    self.strength = level * random.randint(2, 4)
-    self.health = level * random.randint(3, 5)
-    self.coords = list()
-
-  def __str__(self):
-    return f"Name: {self.name}\nMonster class: /{self.type}/\nStrength: {self.strength}\nHealth: {self.health}\nStarting position: {self.coords}"
-
-def get_enemy_name():
-    return NAMES_BASE[random.randint(0, len(NAMES_BASE) - 1)]
-    
-def evoke_hangman():
-    name = get_enemy_name()
-    hangman = Enemy(name, "hangman")
-    return hangman
-
-def evoke_tic_tac_toe(mark):
-    name = mark
-    tic_tac_toe = Enemy(name, "tic-tac-toe", 2)
-    return tic_tac_toe
-
-def evoke_zombie_sailor():
-    name = get_enemy_name()
-    zombie_sailor = Enemy(name, "zombie-sailor", 3)
-    return zombie_sailor
-
-def evoke_agent_smith():
-    name = "Agent Smith"
-    agent = Enemy(name, "virus", 4)
-    return agent
-
-def evoke_milestone():
-    #TODO Boss instance, create when the main functions will be operative
-    pass
-
-def create_enemy(level = 1, number = 2):
-    print(evoke_hangman())
-
-# calling function for testing purposes only.     
-# create_enemy(30, 20)
-
-def create_board(width, height): # Greg
+def create_board(width, height):
     board = list()
     board_fill = 0
     for i in range(height):
@@ -57,18 +9,47 @@ def create_board(width, height): # Greg
             row.append(board_fill)
         board.append(row)
     return board
-    '''
-    Creates a new game board based on input parameters.
-
-    Args:
-    int: The width of the board
-    int: The height of the board
-
-    Returns:
-    list: Game board
-    '''
 
     
 def put_player_on_board(board, player):
     board[player["coordinates"][0]][player["coordinates"][1]] = player["icon"]
     return board
+
+# testing values and print
+player = {"icon": "@", "coordinations": [0, 3]}
+board = [[0] * 5] * 5
+
+def get_board_edges(board):
+    left_edge = upper_edge = 0
+    right_edge = len(board[0])
+    lower_edge = len(board)
+    return upper_edge, lower_edge, left_edge, right_edge
+
+
+def move_player(key, player, board):
+    
+    player_x, player_y = player["coordinations"]
+    key = key_pressed()
+    upper_edge, lower_edge, left_edge, right_edge = get_board_edges(board) 
+    match key:
+        case "w":
+            new_player_position = [player_x - 1, player_y] if player_x - 1 >= upper_edge else False
+        case "s":                
+            new_player_position = [player_x + 1, player_y] if player_x + 1 <= lower_edge else False
+        case "a":
+            new_player_position = [player_x, player_y - 1] if player_y - 1 >= left_edge else False
+        case "d":
+            new_player_position = [player_x, player_y + 1] if player_y + 1 <= right_edge else False
+        case "i":
+            print("inventory opened")
+        case _:
+            print("unknown command")
+    print(player)
+    return player, new_player_position
+
+#testing function call
+# player, is_movement_safe = move_player(player, board)
+# print (f"Zdrowo przydzwoniłeś(aś) w ścianę. Tracisz 1 punkt życia!") if not is_movement_safe else None
+# print(player["coordinations"])
+        
+

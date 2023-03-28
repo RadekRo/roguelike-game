@@ -17,30 +17,39 @@ def main():
     player = create_player(PLAYER_ICON, [PLAYER_START_X, PLAYER_START_Y])
     board = create_board(BOARD_WIDTH, BOARD_HEIGHT)
     util.clear_screen()
-    print(f"User validated: {player}")
+    #print(f"User validated: {player}")
     
     is_running = True
     level = 1
     door_status = "closed"
-    
+    get_game_header()
+    board = put_player_on_board(board, player)
+    util.clear_screen()
+    get_game_header()
+    show_game_intro()
+    key = " "
     while is_running:
-        get_game_header()
-        level = 1
-        board = put_player_on_board(board, player)
-        show_game_intro()
         util.clear_screen()
         get_game_header()
         get_level_annoucement(1)
-        util.clear_screen()
-        get_game_header()
-        display_game_info(player)
-        display_board(board, door_status)
-        input("naciśnij dowolny klawisz żeby zobaczyć przedmioty")
-        util.clear_screen()
-        get_game_header()
-        get_items_on_board(board, level)
-        display_board(board, door_status)
-        display_inventory(player["inventory"])
+        current_level = "active"
+        while current_level == "active":
+            util.clear_screen()
+            get_game_header()
+            display_game_info(player)
+            #display_board(board, door_status)
+            #input("naciśnij dowolny klawisz żeby zobaczyć przedmioty")
+            #util.clear_screen()
+            #get_game_header()
+            #get_items_on_board(board, level)
+            display_board(board, door_status)
+            #display_inventory(player["inventory"])
+            print(f"key pressed {key}")
+            print("level on")
+            key = util.key_pressed()
+            if key == "q":
+                current_level = "off"
+        level += 1       
         is_running = False
         # key = util.key_pressed()
         # if key == 'q':

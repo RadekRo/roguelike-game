@@ -9,11 +9,11 @@ PLAYER_CLASSES = {
                  }
 CLASS_CHARACTERISTICS = { 
                         "KANDYDAT": 
-                            {"strength": 5, "mana": 2, "health": 15},
+                            { "strength": 5, "mana": 2, "health": 15 },
                         "STUDENT":
-                            {"strength": 4, "mana": 5, "health": 20},
+                            { "strength": 4, "mana": 5, "health": 20 },
                         "MENTOR":
-                            {"strength": 3, "mana": 10, "health": 10}
+                            { "strength": 3, "mana": 10, "health": 10 }
                         }
 
 def show_player_class_description(user_name, user_class):
@@ -55,11 +55,7 @@ def show_player_class_description(user_name, user_class):
     Twoja przygoda właśnie się zaczyna...\u001B[0m
 
     \033[1;36mNaciśnij [ENTER], aby przejść dalej...\u001B[0m'''))
-  
-# def draw_line(dots, spaces):
-#     dot = "."*dots
-#     space = " "*spaces
-#     print(f"\n{space}Xx{dot}xXx{dot}xX")
+
 
 def get_input_validation(user_input, type):
     match type:
