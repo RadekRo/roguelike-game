@@ -55,11 +55,7 @@ def show_player_class_description(user_name, user_class):
     Twoja przygoda właśnie się zaczyna...\u001B[0m
 
     \033[1;36mNaciśnij [ENTER], aby przejść dalej...\u001B[0m'''))
-  
-# def draw_line(dots, spaces):
-#     dot = "."*dots
-#     space = " "*spaces
-#     print(f"\n{space}Xx{dot}xXx{dot}xX")
+
 
 def get_input_validation(user_input, type):
     match type:
