@@ -15,12 +15,16 @@ def put_player_on_board(board, player):
     board[player["coordinates"][0]][player["coordinates"][1]] = player["icon"]
     return board
 
-def move_player():
+player = {"coordinations": [3, 3]}
+ 
+def move_player(player):
     while True:
         key = key_pressed()
+        current_player_position = player["coordinations"]
         match key:
             case "w":
-                print("player moves up")
+                new_player_position = [current_player_position[0] - 1, current_player_position[1]]
+                print(f"player moves up. before: {current_player_position} next: {new_player_position}")
             case "s":
                 print("player moved down")
             case "a":
@@ -32,5 +36,5 @@ def move_player():
             case _:
                 print("unknown command")
                 break
-move_player()
+move_player(player)
 
