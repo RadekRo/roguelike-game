@@ -51,7 +51,6 @@ def main():
             if key in MOVEMENT_KEYS:
                 player, board, wall_hit = move_player(key, player, board)
             if key == "i":
-                player["inventory"]["KOWADŁO"] = 1
                 inventory = True if inventory == False else False
             if key == "q":
                 current_level = "off"

@@ -60,39 +60,6 @@ def get_items_on_board(board, level): # funkcja łącząca funkcje z inventory
     board = put_items_on_board(board, merged_inventory)
 
 
-def interaction_on_board(player, board): # co się dzieje po najechaniu na poszczególne litery
-    player_coordinate = board[player["coordinates"][0]][player["coordinates"][1]] 
-    if player_coordinate != 0:
-        match player_coordinate:
-            case "L":
-                player["health"] += 1
-            case "J":
-                player["mana"] += 1
-            case "J":
-                player["mana"] += 1
-            case "S":
-                if "SZTYLET" in player["inventory"]:
-                    player["inventory"]["SZTYLET"] += 1
-                else:
-                    player["inventory"]["SZTYLET"] = 1
-            case "D":
-                if "DZIDA" in player["inventory"]:
-                    player["inventory"]["DZIDA"] += 1
-                else:
-                    player["inventory"]["DZIDA"] = 1            
-            case "M":
-                if "MIECZ" in player["inventory"]:
-                    player["inventory"]["MIECZ"] += 1
-                else:
-                    player["inventory"]["MIECZ"] = 1
-            case "Ł":
-                if "ŁUK" in player["inventory"]:
-                    player["inventory"]["ŁUK"] += 1
-                else:
-                    player["inventory"]["ŁUK"] = 1
-    board[player["coordinates"][0]][player["coordinates"][1]] = player["icon"]
-
-
 def display_inventory(inventory): # wyświetlanie inwentarza (na razie nie używane)
     for item in inventory:
         print(f"{item} | {inventory[item]}")
