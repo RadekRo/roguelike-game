@@ -18,7 +18,7 @@ def get_level_annoucement(level):
     space = " " * space
     input(f'''
 
-                \033[1;31mPOZIOM {level}
+                 \033[1;31mPOZIOM {level}
 {space}{text}\033[0m
     
 \033[1;36mNaciśnij [ENTER] aby kontynuować...''')
@@ -26,23 +26,23 @@ def get_level_annoucement(level):
 def get_level_description(level):
     match level:
         case 1:
-            text = "HANGMAN'S REVENGE"
+            text = "ZEMSTA WISIELCA"
             space = int(42 / 2 - len(text) / 2)
             return space, text
         case 2:
-            text = "TIC-TAC-TOE ATTACK"
+            text = "MASAKRA KÓŁKA I KRZYŻYKA"
             space = int(42 / 2 - len(text) / 2)
             return space, text
         case 3:
-            text = "ZOMBIE FROM THE OCEAN'S DEEP"
+            text = "MARYNARZE ZOMBIE"
             space = int(42 / 2 - len(text) / 2)
             return space, text
         case 4:
-            text = "THE MATRIX"
+            text = "MATRIX"
             space = int(42 / 2 - len(text) / 2)
             return space, text
         case 5:
-            text = "MILESTONE CURSE"
+            text = "KLĄTWA MILESTONE'A"
             space = int(42 / 2 - len(text) / 2)
             return space, text 
         
