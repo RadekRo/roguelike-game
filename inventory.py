@@ -8,6 +8,7 @@ BOARD_HEIGHT = 10
 PLAYER_START_X = 9
 PLAYER_START_Y = 19
 
+
 def create_items(level): # to jest inwentarz przedmiotów które można zbierać na planszy
     items = dict()
     items["LEKARSTWO"] = level #adds health
@@ -18,6 +19,7 @@ def create_items(level): # to jest inwentarz przedmiotów które można zbierać
     items["MIECZ"] = level # adds strength
     items["ŁUK"] = level # adds strength
     return items
+
 
 def add_coordinates_to_items(items): # dodawanie losowych koordynaty do przedmiotów
     items_with_coordinates = dict()
@@ -34,6 +36,7 @@ def add_coordinates_to_items(items): # dodawanie losowych koordynaty do przedmio
     else:
         add_coordinates_to_items(items)
 
+
 def merge_inventory(items, items_with_coordinates): # łączenie słowników przedmiotów i koordynat z ilością przedmiotów
     merged_inventory = dict(items_with_coordinates)
     for key in items:
@@ -43,16 +46,19 @@ def merge_inventory(items, items_with_coordinates): # łączenie słowników prz
             merged_inventory[key] = items[key]
     return merged_inventory
     
+
 def put_items_on_board(board, merged_inventory): # wkładanie przedmiotów do boarda
     for key in merged_inventory:
         board[merged_inventory[key][0][0]][merged_inventory[key][0][1]] = key[0]
     return board
+
 
 def get_items_on_board(board, level): # funkcja łącząca funkcje z inventory
     items = create_items(level)
     items_with_coordinates = add_coordinates_to_items(items)
     merged_inventory = merge_inventory(items, items_with_coordinates)
     board = put_items_on_board(board, merged_inventory)
+
 
 def interaction_on_board(player, board): # co się dzieje po najechaniu na poszczególne litery
     player_coordinate = board[player["coordinates"][0]][player["coordinates"][1]] 
@@ -85,6 +91,7 @@ def interaction_on_board(player, board): # co się dzieje po najechaniu na poszc
                 else:
                     player["inventory"]["ŁUK"] = 1
     board[player["coordinates"][0]][player["coordinates"][1]] = player["icon"]
+
 
 def display_inventory(inventory): # wyświetlanie inwentarza (na razie nie używane)
     for item in inventory:
