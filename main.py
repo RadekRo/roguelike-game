@@ -27,28 +27,29 @@ def main():
     util.clear_screen()
     get_game_header()
     show_game_intro()
-    
+    key = " "
     while is_running:
         util.clear_screen()
         get_game_header()
         get_level_annoucement(1)
-        util.clear_screen()
-        get_game_header()
-        display_game_info(player)
-        display_board(board, door_status)
-        input("naciśnij dowolny klawisz żeby zobaczyć przedmioty")
-        util.clear_screen()
-        get_game_header()
-        get_items_on_board(board, level)
-        display_board(board, door_status)
-        display_inventory(player["inventory"])
         current_level = "active"
         while current_level == "active":
-            print("level processed")
+            util.clear_screen()
+            get_game_header()
+            display_game_info(player)
+            #display_board(board, door_status)
+            #input("naciśnij dowolny klawisz żeby zobaczyć przedmioty")
+            #util.clear_screen()
+            #get_game_header()
+            #get_items_on_board(board, level)
+            display_board(board, door_status)
+            #display_inventory(player["inventory"])
+            print(f"key pressed {key}")
             print("level on")
             key = util.key_pressed()
             if key == "q":
-                current_level = "off"        
+                current_level = "off"
+        level += 1       
         is_running = False
         # key = util.key_pressed()
         # if key == 'q':
