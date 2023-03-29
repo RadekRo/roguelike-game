@@ -68,7 +68,8 @@ def find_empty_board_position(board):
 
 
 def place_enemy_on_board(board, coordinations, sign):
-    board[coordinations[0]][coordinations[1]] = "\u001B[31m" + sign + "\u001b[0m"
+    #board[coordinations[0]][coordinations[1]] = "\u001B[31m" + sign + "\u001b[0m"
+    board[coordinations[0]][coordinations[1]] = sign
     return board
 
 

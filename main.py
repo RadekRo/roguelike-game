@@ -1,9 +1,9 @@
 import util
-from player import create_player
+from player import create_player, is_player_dead
 from enemies import create_enemies
 from engine import create_board, put_player_on_board, move_player
 from ui import display_board, display_game_info
-from graphics import get_game_header, get_level_annoucement, show_game_intro
+from graphics import get_game_header, get_level_annoucement, show_game_intro, print_skull_and_bones
 from inventory import get_items_on_board, display_inventory
 
 BOARD_WIDTH = 40
@@ -46,6 +46,10 @@ def main():
             display_game_info(player)
             display_board(board, door_status)
             inventory == True and display_inventory(player["inventory"])
+            player_dead = is_player_dead(player)
+            if player_dead == True:
+                current_level = "off"
+                is_running = False
             print(f"key pressed {key}")
             if wall_hit:
                 print("Zdrowo przydzwoniłeś(aś) w ścianę. Tracisz 1 pkt życia. Uważaj!")
@@ -63,6 +67,9 @@ def main():
         # else:
         #     pass
     #util.clear_screen()
+    util.clear_screen()
+    print_skull_and_bones()
+    print("Zginąłeś!")
     print("GAME OVER")
 
 

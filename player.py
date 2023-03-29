@@ -131,3 +131,9 @@ def create_player(player_icon, player_starting_coordinates):
     show_player_class_description(player["name"], player["class"])
 
     return player
+
+def is_player_dead(player):
+    if player["health"] == 0:
+        return True
+    else:
+        return False

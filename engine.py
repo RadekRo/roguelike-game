@@ -45,7 +45,6 @@ def move_player(key, player, board):
                 player = interaction_on_board(player, board[player_x + 1][player_y])
                 board[player_x + 1][player_y] = player["icon"]
                 board[player_x][player_y] = 0                 
-
             else:
                 player_hits_the_wall = True
                 player["health"] -= 1
@@ -102,6 +101,8 @@ def interaction_on_board(player, sign): # co się dzieje po najechaniu na poszcz
                     player["inventory"]["ŁUK"] += 1
                 else:
                     player["inventory"]["ŁUK"] = 1
+            case "W":
+                input("Game paused...")
 
     return player     
 
