@@ -1,6 +1,6 @@
 import random
 
-NAMES_BASE = ["Janek", "Marcin", "Bartek", "Siergiej", "Sebastian", "Ryszard", "Jakub", "Marek"] 
+NAMES_BASE = ["Kai", "Eliana", "Jayden", "Ezra", "Luca", "Rowan", "Nova", "Amara", "Aaliyah", "Finn", "Zion", "Maeve", "Kayden", "Mia", "Mila", "Aurora", "Alina", "Remi", "Amaya", "Ari", "Blake", "Elliot", "Ivy", "Quinn", "Leo", "Arthur", "Rachel", "River", "Axel", "Aria", "Alex", "Molly", "Jude", "Elias", "Milo", "Malachi", "Charlie", "Ira", "Atlas", "Evelyn"] 
 
 class Enemy:
   def __init__(self, name, type, level = 1):
@@ -11,14 +11,14 @@ class Enemy:
     self.coords = list()
 
   def __str__(self):
-    return f"Name: {self.name}\nMonster class: /{self.type}/\nStrength: {self.strength}\nHealth: {self.health}\nStarting position: {self.coords}"
+    return f"Name: {self.name}\nMonster class: '{self.type}'\nStrength: {self.strength}\nHealth: {self.health}\nStarting position: {self.coords}\n"
 
 def get_enemy_name():
     return NAMES_BASE[random.randint(0, len(NAMES_BASE) - 1)]
     
 def evoke_hangman():
     name = get_enemy_name()
-    hangman = Enemy(name, "hangman")
+    hangman = Enemy(name, "Wisielec")
     return hangman
 
 def evoke_tic_tac_toe(mark):
@@ -41,4 +41,20 @@ def evoke_milestone():
     pass
 
 def create_enemy(level = 1, number = 2):
-    print(evoke_hangman())
+    enemies = dict()
+    match level:
+        case 1:
+          for i in range(number):
+             enemies[i] = evoke_hangman()
+        case 2: 
+          enemy_nickname = "XO"
+        case 3:
+          enemy_nickname = "Zombie marynarz"
+        case 4:
+          enemy_nickname = "Agent"
+        case 5:
+          enemy_nickname = "Lord Milestone"
+    return enemies      
+
+enemies = create_enemy(1, 3)
+print(enemies[0], enemies[1], enemies[2])
