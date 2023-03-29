@@ -1,3 +1,5 @@
+ENEMIES_SYMBOLS = ["W", "X", "O", "Z", "A"]
+
 def display_game_info(player):
     mana = player["mana"] * '\u2728'
     health = player["health"] * '\u2764 '
@@ -19,8 +21,8 @@ def display_board(board, door_status = "closed"):
         for col in row:
             if col == 0:
                 insert = " "
-            elif col == "W":
-                insert = "\u001B[31m" + "W" + "\u001b[0m"
+            elif col in ENEMIES_SYMBOLS:
+                insert = "\u001B[31m" + col + "\u001b[0m"
             else:
                 insert = col
             wall += insert
