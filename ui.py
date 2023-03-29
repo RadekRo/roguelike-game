@@ -19,6 +19,8 @@ def display_board(board, door_status = "closed"):
         for col in row:
             if col == 0:
                 insert = " "
+            elif col == "W":
+                insert = "\u001B[31m" + "W" + "\u001b[0m"
             else:
                 insert = col
             wall += insert
