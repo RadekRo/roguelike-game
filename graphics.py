@@ -59,3 +59,33 @@ dopadnij krwiożerczego Milestone'a
 i pomścij tych, którzy polegli przed Tobą...\u001B[0m
 
 \033[1;36mNaciśnij [ENTER] aby kontynuować...''')
+
+def print_skull_and_bones():
+    print('''
+MMMMMMMMMMMMMMMMMMMMMWNK00000KXWMMMMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMWXkl;'..   ...,cxKWMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMNk:.               .;dXMMMMMMMMMMMM
+MMMMMMMMMMMMMWO;                     'xNMMMMMMMMMM
+MMMMMMMMMMM0'                           .xMMMMMMMM
+MMMMMMMMMMM0'   ;dkOkdc.     .:oxOkxc.  .xMMMMMMMM
+MMMMMMMMMMMX;  :XMMMMMMx.    cWMMMMMWo  .OMMMMMMMM
+MMMMMMMMMMMWl  ,0WMMMMX:     ,0MMMMMXc  ;XMMMMMMMM
+MMMMMMMMMMMMO.  .:oddl'   ..  .cdxoc'  .dWMMMMMMMM
+MMMMMMMMMMMMWk'         ,d0Xc         .dNMMMMMMMMM
+MMMMMMMMMMMMMMXko,      lKXXx.     'lxKWMMMMMMMMMM
+MMMMMWX00KWMMMMMMNo.    .....     :XMMMMMMWX00KWMM
+MMMMXl.. .;kNMMMMMNc.            ;KMMMMMW0c.  .:0M
+MMMMK:      cKMMMMMNOl;:' ''.;;ckXMMMMMNd.     ,OM
+MMMMMK,      .o0NMMMMWWWX0XXKNWWMMMMWKd,      .kMM
+MMMMWo         .':dkKWMMMMMMMMMWXOdc,.         :XM
+MMMMWk;........     .,cok0KXOdc;.     ........,dNM
+MMMMMMWXKXXNXK0Oxl:'     ...     .;cdk0KXXXXKXNMMM
+MMMMMMMMMMMMWXKOdl:'       .     .:ldk0XNWMMMMMMMM
+MMMMW0olllc:,..     .';lxkO0xo:'.     ..';cllllOWM
+MMMM0,         .':ok0NWMMMMMMMMNKkoc,.         .kM
+MMMMX:      .:d0NMMMMMMMMMMMMMMMMMMMWKkc.      .OM
+MMMMMK,   .c0WMMMMMMMMMMMMMMMMMMMMMMMMMMXo.   .kWM
+MMMMMMO;,:kWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0l,,xNMM
+''')
+
+print_skull_and_bones()
