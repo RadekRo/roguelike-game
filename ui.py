@@ -1,10 +1,14 @@
 def display_game_info(player):
     mana = player["mana"] * '\u2728'
     health = player["health"] * '\u2764 '
-    print(f'''SIŁ: {player["strength"]}
+    if len(player["inventory"]) > 0: 
+        total_strength = player["strength"] + sum(player["inventory"].values())
+    else:
+        total_strength = player["strength"]
+    print(f'''SIŁ: {player["strength"]} ({total_strength})
 MAN: {mana}
 ZDR: {health} 
-naciśnij [i] aby, obejrzeć ekwipunek''')
+naciśnij [i], aby pokazać/ukryć ekwipunek''')
 
 
 def display_board(board, door_status = "closed"):

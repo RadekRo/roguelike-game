@@ -14,10 +14,10 @@ def create_items(level): # to jest inwentarz przedmiotów które można zbierać
     items["LEKARSTWO"] = level #adds health
     items["JEDZENIE"] = level #adds mana
     items["PICIE"] = level # adds mana
-    items["SZTYLET"] = level # adds strength
-    items["DZIDA"] = level # adds strength
-    items["MIECZ"] = level # adds strength
-    items["ŁUK"] = level # adds strength
+    items["SZTYLET"] = 1 # adds strength
+    items["DZIDA"] = 2 # adds strength
+    items["MIECZ"] = 3 # adds strength
+    items["ŁUK"] = 4 # adds strength
     return items
 
 
@@ -60,42 +60,9 @@ def get_items_on_board(board, level): # funkcja łącząca funkcje z inventory
     board = put_items_on_board(board, merged_inventory)
 
 
-def interaction_on_board(player, board): # co się dzieje po najechaniu na poszczególne litery
-    player_coordinate = board[player["coordinates"][0]][player["coordinates"][1]] 
-    if player_coordinate != 0:
-        match player_coordinate:
-            case "L":
-                player["health"] += 1
-            case "J":
-                player["mana"] += 1
-            case "J":
-                player["mana"] += 1
-            case "S":
-                if "SZTYLET" in player["inventory"]:
-                    player["inventory"]["SZTYLET"] += 1
-                else:
-                    player["inventory"]["SZTYLET"] = 1
-            case "D":
-                if "DZIDA" in player["inventory"]:
-                    player["inventory"]["DZIDA"] += 1
-                else:
-                    player["inventory"]["DZIDA"] = 1            
-            case "M":
-                if "MIECZ" in player["inventory"]:
-                    player["inventory"]["MIECZ"] += 1
-                else:
-                    player["inventory"]["MIECZ"] = 1
-            case "Ł":
-                if "ŁUK" in player["inventory"]:
-                    player["inventory"]["ŁUK"] += 1
-                else:
-                    player["inventory"]["ŁUK"] = 1
-    board[player["coordinates"][0]][player["coordinates"][1]] = player["icon"]
-
-
 def display_inventory(inventory): # wyświetlanie inwentarza (na razie nie używane)
     for item in inventory:
-        print(f"{item} | {inventory[item]}")
+        print(f"{item} | +{inventory[item]} S")
 
 # testy funkcji w inventory.py
 door_status = "closed"

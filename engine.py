@@ -15,9 +15,6 @@ def put_player_on_board(board, player):
     board[player["coordinates"][0]][player["coordinates"][1]] = player["icon"]
     return board
 
-# testing values and print
-player = {"icon": "@", "coordinations": [0, 3]}
-board = [[0] * 5] * 5
 
 def get_board_edges(board):
     left_edge = upper_edge = 0
@@ -28,28 +25,83 @@ def get_board_edges(board):
 
 def move_player(key, player, board):
     
-    player_x, player_y = player["coordinations"]
-    key = key_pressed()
-    upper_edge, lower_edge, left_edge, right_edge = get_board_edges(board) 
+    player_x, player_y = player["coordinates"]
+    upper_edge, lower_edge, left_edge, right_edge = get_board_edges(board)
+    player_hits_the_wall = False 
+    
     match key:
         case "w":
-            new_player_position = [player_x - 1, player_y] if player_x - 1 >= upper_edge else False
-        case "s":                
-            new_player_position = [player_x + 1, player_y] if player_x + 1 <= lower_edge else False
+            if player_x - 1 >= upper_edge:
+                player["coordinates"] = [player_x - 1, player_y]
+                player = interaction_on_board(player, board[player_x - 1][player_y])
+                board[player_x - 1][player_y] = player["icon"]
+                board[player_x][player_y] = 0    
+            else:
+                player_hits_the_wall = True
+                player["health"] -= 1
+        case "s":    
+            if player_x + 1 <= lower_edge - 1:
+                player["coordinates"] = [player_x + 1, player_y]
+                player = interaction_on_board(player, board[player_x + 1][player_y])
+                board[player_x + 1][player_y] = player["icon"]
+                board[player_x][player_y] = 0                 
+
+            else:
+                player_hits_the_wall = True
+                player["health"] -= 1
         case "a":
-            new_player_position = [player_x, player_y - 1] if player_y - 1 >= left_edge else False
+            if player_y - 1 >= left_edge:
+                player["coordinates"] = [player_x, player_y - 1]
+                player = interaction_on_board(player, board[player_x][player_y -1])
+                board[player_x][player_y - 1] = player["icon"]
+                board[player_x][player_y] = 0
+            else:
+                player_hits_the_wall = True
+                player["health"] -= 1
         case "d":
-            new_player_position = [player_x, player_y + 1] if player_y + 1 <= right_edge else False
-        case "i":
-            print("inventory opened")
+            if player_y + 1 <= right_edge - 1:
+                player["coordinates"] = [player_x, player_y + 1]
+                player = interaction_on_board(player, board[player_x][player_y + 1])
+                board[player_x][player_y + 1] = player["icon"]
+                board[player_x][player_y] = 0
+            else:
+                player_hits_the_wall = True
+                player["health"] -= 1
         case _:
             print("unknown command")
-    print(player)
-    return player, new_player_position
 
-#testing function call
-# player, is_movement_safe = move_player(player, board)
-# print (f"Zdrowo przydzwoniłeś(aś) w ścianę. Tracisz 1 punkt życia!") if not is_movement_safe else None
-# print(player["coordinations"])
-        
+    return player, board, player_hits_the_wall
+
+def interaction_on_board(player, sign): # co się dzieje po najechaniu na poszczególne litery
+    
+    if sign != 0:
+        match sign:
+            case "L":
+                player["health"] += 1
+            case "J":
+                player["mana"] += 1
+            case "J":
+                player["mana"] += 1
+            case "S":
+                if "SZTYLET" in player["inventory"]:
+                    player["inventory"]["SZTYLET"] += 1
+                else:
+                    player["inventory"]["SZTYLET"] = 1
+            case "D":
+                if "DZIDA" in player["inventory"]:
+                    player["inventory"]["DZIDA"] += 1
+                else:
+                    player["inventory"]["DZIDA"] = 1            
+            case "M":
+                if "MIECZ" in player["inventory"]:
+                    player["inventory"]["MIECZ"] += 1
+                else:
+                    player["inventory"]["MIECZ"] = 1
+            case "Ł":
+                if "ŁUK" in player["inventory"]:
+                    player["inventory"]["ŁUK"] += 1
+                else:
+                    player["inventory"]["ŁUK"] = 1
+
+    return player     
 
