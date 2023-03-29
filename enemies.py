@@ -19,14 +19,17 @@ class Enemy:
     def __str__(self):
         return f"Name: {self.name}\nMonster class: '{self.type}'\nStrength: {self.strength}\nHealth: {self.health}\nStarting position: {self.coords}\n"
 
+
 def get_enemy_name():
     return NAMES_BASE[random.randint(0, len(NAMES_BASE) - 1)]
     
+
 def evoke_hangman():
     name = get_enemy_name()
     mark = "W"
     hangman = Enemy(name, "Wisielec")
     return hangman, mark
+
 
 def evoke_tic_tac_toe():
     name = get_enemy_name()
@@ -34,17 +37,20 @@ def evoke_tic_tac_toe():
     tic_tac_toe = Enemy(name, "XO")
     return tic_tac_toe, mark
 
+
 def evoke_zombie_sailor():
     name = get_enemy_name()
     mark = "Z"
     zombie_sailor = Enemy(name, "Marynarz Zombie")
     return zombie_sailor, mark
 
+
 def evoke_agent_smith():
     name = "Agent Smith"
     mark = "A"
     agent_smith = Enemy(name, "Matrix")
     return agent_smith, mark
+
 
 def evoke_milestone():
     #TODO Boss instance, create when the main functions will be operative
@@ -62,11 +68,11 @@ def find_empty_board_position(board):
 
 
 def place_enemy_on_board(board, coordinations, sign):
-    board[coordinations[0]][coordinations[1]] = sign
+    board[coordinations[0]][coordinations[1]] = "\u001B[31m" + sign + "\u001b[0m"
     return board
 
 
-def create_enemy(board, level = 1, number = 2):
+def create_enemies(board, level = 1, number = 2):
     
     enemies = dict()
     for i in range(number):
@@ -84,8 +90,8 @@ def create_enemy(board, level = 1, number = 2):
         enemy_starting_position = find_empty_board_position(board)
         enemies[i].update_coords(enemy_starting_position)
         board = place_enemy_on_board(board, enemy_starting_position, mark)
-        
-    return enemies, board
+
+    return board, enemies
 
 #tests
 # board = [[0, 1, 1],[0, 0, 0],[1, 1, 1]]

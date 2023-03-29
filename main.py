@@ -1,5 +1,6 @@
 import util
 from player import create_player
+from enemies import create_enemies
 from engine import create_board, put_player_on_board, move_player
 from ui import display_board, display_game_info
 from graphics import get_game_header, get_level_annoucement, show_game_intro
@@ -38,6 +39,7 @@ def main():
         wall_hit = False
         inventory = False
         get_items_on_board(board, level)
+        board, enemies = create_enemies(board, level, 3)
         while current_level == "active":
             util.clear_screen()
             get_game_header()
