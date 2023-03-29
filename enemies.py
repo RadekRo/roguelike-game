@@ -28,24 +28,28 @@ def evoke_hangman():
     hangman = Enemy(name, "Wisielec")
     return hangman, mark
 
-def evoke_tic_tac_toe(mark):
-    name = mark
-    tic_tac_toe = Enemy(name, "tic-tac-toe", 2)
-    return tic_tac_toe
+def evoke_tic_tac_toe():
+    name = get_enemy_name()
+    mark = random.choice(["X", "O"])
+    tic_tac_toe = Enemy(name, "XO")
+    return tic_tac_toe, mark
 
 def evoke_zombie_sailor():
     name = get_enemy_name()
-    zombie_sailor = Enemy(name, "zombie-sailor", 3)
-    return zombie_sailor
+    mark = "Z"
+    zombie_sailor = Enemy(name, "Marynarz Zombie")
+    return zombie_sailor, mark
 
 def evoke_agent_smith():
     name = "Agent Smith"
-    agent = Enemy(name, "virus", 4)
-    return agent
+    mark = "A"
+    agent_smith = Enemy(name, "Matrix")
+    return agent_smith, mark
 
 def evoke_milestone():
     #TODO Boss instance, create when the main functions will be operative
     pass
+
 
 def find_empty_board_position(board):
     empty_slot = False
@@ -56,34 +60,38 @@ def find_empty_board_position(board):
             empty_slot = True
     return [enemy_x, enemy_y]
 
+
 def place_enemy_on_board(board, coordinations, sign):
     board[coordinations[0]][coordinations[1]] = sign
     return board
 
+
 def create_enemy(board, level = 1, number = 2):
+    
     enemies = dict()
-    match level:
-        case 1:
-          for i in range(number):
-             enemies[i], mark = evoke_hangman()
-             enemy_starting_position = find_empty_board_position(board)
-             enemies[i].update_coords(enemy_starting_position)
-             board = place_enemy_on_board(board, enemy_starting_position, mark)
-        case 2: 
-          enemy_nickname = "XO"
-        case 3:
-          enemy_nickname = "Zombie marynarz"
-        case 4:
-          enemy_nickname = "Agent"
-        case 5:
-          enemy_nickname = "Lord Milestone"
+    for i in range(number):
+        match level:
+            case 1:
+                enemies[i], mark = evoke_hangman()
+            case 2:
+                enemies[i], mark = evoke_tic_tac_toe()
+            case 3:
+                enemies[i], mark = evoke_zombie_sailor()
+            case 4:
+                enemies[i], mark = evoke_agent_smith()
+            case 5:
+                enemies[i], mark = evoke_milestone()
+        enemy_starting_position = find_empty_board_position(board)
+        enemies[i].update_coords(enemy_starting_position)
+        board = place_enemy_on_board(board, enemy_starting_position, mark)
+        
     return enemies, board
 
 #tests
-board = [[0, 1, 1],[0, 0, 0],[1, 1, 1]]
-print(board)
-enemies, board = create_enemy(board, 1, 3)
-print(enemies[0])
-print(enemies[1])
-print(enemies[2])
-print(board)
+# board = [[0, 1, 1],[0, 0, 0],[1, 1, 1]]
+# print(board)
+# enemies, board = create_enemy(board, 3, 3)
+# print(enemies[0])
+# print(enemies[1])
+# print(enemies[2])
+# print(board)
