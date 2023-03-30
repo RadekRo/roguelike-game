@@ -46,10 +46,6 @@ def main():
             display_game_info(player)
             display_board(board, door_status)
             inventory == True and display_inventory(player["inventory"])
-            player_dead = is_player_dead(player)
-            if player_dead == True:
-                current_level = "off"
-                is_running = False
             print(f"key pressed {key}")
             if wall_hit:
                 print("Zdrowo przydzwoniłeś(aś) w ścianę. Tracisz 1 pkt życia. Uważaj!")
@@ -59,6 +55,10 @@ def main():
             if key == "i":
                 inventory = True if inventory == False else False
             if key == "q":
+                current_level = "off"
+                is_running = False
+            player_dead = is_player_dead(player)
+            if player_dead == True:
                 current_level = "off"
                 is_running = False
         # key = util.key_pressed()
