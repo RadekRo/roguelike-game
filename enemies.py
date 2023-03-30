@@ -25,25 +25,34 @@ def evoke_hangman():
 
 
 def evoke_tic_tac_toe():
-    name = get_enemy_name()
     mark = random.choice(["X", "O"])
-    tic_tac_toe = Enemy(name, "XO")
+    tic_tac_toe = { "name": get_enemy_name(), 
+                "type": "XO", 
+                "strength": get_enemy_strength(2), 
+                "health": get_enemy_health(2), 
+                "coords": list() }
     return tic_tac_toe, mark
-
+    
 
 def evoke_zombie_sailor():
-    name = get_enemy_name()
     mark = "Z"
-    zombie_sailor = Enemy(name, "Marynarz Zombie")
+    zombie_sailor = { "name": get_enemy_name(), 
+                "type": "Marynarz Zombie", 
+                "strength": get_enemy_strength(3), 
+                "health": get_enemy_health(3), 
+                "coords": list() }
     return zombie_sailor, mark
-
+    
 
 def evoke_agent_smith():
-    name = "Agent Smith"
     mark = "A"
-    agent_smith = Enemy(name, "Matrix")
+    agent_smith = { "name": "Agent Smith", 
+                "type": "Matrix", 
+                "strength": get_enemy_strength(4), 
+                "health": get_enemy_health(4), 
+                "coords": list() }
     return agent_smith, mark
-
+    
 
 def evoke_milestone():
     #TODO Boss instance, create when the main functions will be operative
@@ -75,15 +84,17 @@ def create_enemies(board, level = 1, number = 2):
                 enemy, mark = evoke_hangman()
                 enemies.append(enemy)
             case 2:
-                enemies[i], mark = evoke_tic_tac_toe()
+                enemy, mark = evoke_tic_tac_toe()
+                enemies.append(enemy)
             case 3:
-                enemies[i], mark = evoke_zombie_sailor()
+                enemy, mark = evoke_zombie_sailor()
+                enemies.append(enemy)
             case 4:
-                enemies[i], mark = evoke_agent_smith()
+                enemy, mark = evoke_agent_smith()
+                enemies.append(enemy)
             case 5:
-                enemies[i], mark = evoke_milestone()
+                enemy, mark = evoke_milestone()
         enemy_starting_position = find_empty_board_position(board)
-        print(enemies)
         enemies[i]["coords"] = enemy_starting_position
         board = place_enemy_on_board(board, enemy_starting_position, mark)
 

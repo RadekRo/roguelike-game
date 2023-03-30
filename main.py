@@ -47,7 +47,8 @@ def main():
         get_items_on_board(board, level)
         board, enemies = create_enemies(board, level, 6)
         moves = 1
-    
+        print(find(enemies, [0, 0]))
+        input("Wait a while... ")
         while current_level == "active":
             util.clear_screen()
             get_game_header()
