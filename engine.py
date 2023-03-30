@@ -106,3 +106,6 @@ def interaction_on_board(player, sign): # co się dzieje po najechaniu na poszcz
 
     return player     
 
+def fight(player, enemy):
+    pass
+
