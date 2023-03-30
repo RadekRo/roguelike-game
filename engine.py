@@ -1,4 +1,4 @@
-from util import key_pressed
+import random
 
 def create_board(width, height):
     board = list()
@@ -71,8 +71,26 @@ def move_player(key, player, board):
 
     return player, board, player_hits_the_wall
 
-def move_enemy():
-    pass
+def check_surroundings(coord, board):
+    upper_edge, lower_edge, left_edge, right_edge = get_board_edges(board)
+    potential_moves = list()
+    if coord[0] > upper_edge:
+        board[coord[0] - 1][coord[1]] == 0 and potential_moves.append([coord[0] - 1, coord[1]])
+    if coord[0] < lower_edge - 1:
+        board[coord[0] + 1][coord[1]] == 0 and potential_moves.append([coord[0] + 1, coord[1]])
+    if coord[1] > left_edge:
+        board[coord[0]][coord[1] - 1] == 0 and potential_moves.append([coord[0], coord[1] - 1])
+    if coord[1] < right_edge - 1:
+        board[coord[0]][coord[1] + 1] == 0 and potential_moves.append([coord[0], coord[1] + 1])
+    return random.choice(potential_moves)
+
+def move_enemies(enemies, board):
+    for i in range(len(enemies)):
+        current_coords = enemies[i].coords
+        new_coords = check_surroundings(current_coords, board)
+        enemies[i].update_coords(new_coords)
+        board[new_coords[0]][new_coords[1]] = board[current_coords[0]][current_coords[1]]
+        board[current_coords[0]][current_coords[1]] = 0
 
 def interaction_on_board(player, sign): # co się dzieje po najechaniu na poszczególne litery
     
