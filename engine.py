@@ -71,6 +71,9 @@ def move_player(key, player, board):
 
     return player, board, player_hits_the_wall
 
+def move_enemy():
+    pass
+
 def interaction_on_board(player, sign): # co się dzieje po najechaniu na poszczególne litery
     
     if sign != 0:
