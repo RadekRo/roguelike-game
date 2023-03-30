@@ -40,6 +40,7 @@ def main():
         inventory = False
         get_items_on_board(board, level)
         board, enemies = create_enemies(board, level, 6)
+        moves = 1
         while current_level == "active":
             util.clear_screen()
             get_game_header()
@@ -52,7 +53,9 @@ def main():
             key = util.key_pressed()
             if key in MOVEMENT_KEYS:
                 player, board, wall_hit = move_player(key, player, board)
-                move_enemies(enemies, board)
+                if moves % 2 == 0: 
+                    move_enemies(enemies, board)
+                moves += 1
             if key == "i":
                 inventory = True if inventory == False else False
             if key == "q":

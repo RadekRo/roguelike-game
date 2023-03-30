@@ -123,7 +123,7 @@ def interaction_on_board(player, sign): # co się dzieje po najechaniu na poszcz
                 else:
                     player["inventory"]["ŁUK"] = 1
             case "W" | "X" | "O" | "Z" | "A":
-                input("Game paused...")
+                input("Lets fight! ")
 
     return player     
 
