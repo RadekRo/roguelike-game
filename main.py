@@ -39,7 +39,7 @@ def main():
         wall_hit = False
         inventory = False
         get_items_on_board(board, level)
-        board, enemies = create_enemies(board, level, 3)
+        board, enemies = create_enemies(board, level, 6)
         while current_level == "active":
             util.clear_screen()
             get_game_header()

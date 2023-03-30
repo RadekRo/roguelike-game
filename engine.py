@@ -122,7 +122,7 @@ def interaction_on_board(player, sign): # co się dzieje po najechaniu na poszcz
                     player["inventory"]["ŁUK"] += 1
                 else:
                     player["inventory"]["ŁUK"] = 1
-            case "W":
+            case "W" | "X" | "O" | "Z" | "A":
                 input("Game paused...")
 
     return player     
