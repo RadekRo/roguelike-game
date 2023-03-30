@@ -61,15 +61,10 @@ def main():
             if player_dead == True:
                 current_level = "off"
                 is_running = False
-        # key = util.key_pressed()
-        # if key == 'q':
-        #     is_running = False
-        # else:
-        #     pass
-    #util.clear_screen()
-    util.clear_screen()
-    print_skull_and_bones()
-    print("Zginąłeś!")
+    if player_dead == True:
+        util.clear_screen()
+        print_skull_and_bones()
+        print("Zginąłeś!")
     print("GAME OVER")
 
 
