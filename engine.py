@@ -86,9 +86,9 @@ def check_surroundings(coord, board):
 
 def move_enemies(enemies, board):
     for i in range(len(enemies)):
-        current_coords = enemies[i].coords
+        current_coords = enemies[i]["coords"]
         new_coords = check_surroundings(current_coords, board)
-        enemies[i].update_coords(new_coords)
+        enemies[i]["coords"] = new_coords
         board[new_coords[0]][new_coords[1]] = board[current_coords[0]][current_coords[1]]
         board[current_coords[0]][current_coords[1]] = 0
 

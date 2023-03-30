@@ -15,6 +15,11 @@ PLAYER_START_Y = 19
 
 MOVEMENT_KEYS = ["w", "s", "a", "d"]
 
+def find(arr , coords):
+    for x in arr:
+        if x["coords"] == coords:
+            return x
+
 def main():
     util.clear_screen()
     player = create_player(PLAYER_ICON, [PLAYER_START_X, PLAYER_START_Y])
@@ -31,6 +36,7 @@ def main():
     get_game_header()
     show_game_intro()
     key = " "
+
     while is_running:
         util.clear_screen()
         get_game_header()
@@ -41,6 +47,7 @@ def main():
         get_items_on_board(board, level)
         board, enemies = create_enemies(board, level, 6)
         moves = 1
+    
         while current_level == "active":
             util.clear_screen()
             get_game_header()
@@ -65,6 +72,7 @@ def main():
             if player_dead == True:
                 current_level = "off"
                 is_running = False
+    
     if player_dead == True:
         util.clear_screen()
         print_skull_and_bones()

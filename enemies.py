@@ -2,22 +2,12 @@ import random
 
 NAMES_BASE = ["Kai", "Eliana", "Jayden", "Ezra", "Luca", "Rowan", "Nova", "Amara", "Aaliyah", "Finn", "Zion", "Maeve", "Kayden", "Mia", "Mila", "Aurora", "Alina", "Remi", "Amaya", "Ari", "Blake", "Elliot", "Ivy", "Quinn", "Leo", "Arthur", "Rachel", "River", "Axel", "Aria", "Alex", "Molly", "Jude", "Elias", "Milo", "Malachi", "Charlie", "Ira", "Atlas", "Evelyn"] 
 
-class Enemy:
-    def __init__(self, name, type, level = 1):
-        self.name = name
-        self.type = type
-        self.strength = level * random.randint(2, 4)
-        self.health = level * random.randint(3, 5)
-        self.coords = list()
 
-    def update_coords(self, new_coords):
-        self.coords = new_coords
+def get_enemy_strength(basic):
+    return basic * random.randint(2, 4)
 
-    def update_health(self, new_health):
-        self.health = new_health
-
-    def __str__(self):
-        return f"Name: {self.name}\nMonster class: '{self.type}'\nStrength: {self.strength}\nHealth: {self.health}\nStarting position: {self.coords}\n"
+def get_enemy_health(basic):
+    return basic * random.randint(3, 5)
 
 
 def get_enemy_name():
@@ -25,9 +15,12 @@ def get_enemy_name():
     
 
 def evoke_hangman():
-    name = get_enemy_name()
     mark = "W"
-    hangman = Enemy(name, "Wisielec")
+    hangman = { "name": get_enemy_name(), 
+                "type": "Wisielec", 
+                "strength": get_enemy_strength(1), 
+                "health": get_enemy_health(1), 
+                "coords": list() }
     return hangman, mark
 
 
@@ -75,11 +68,12 @@ def place_enemy_on_board(board, coordinations, sign):
 
 def create_enemies(board, level = 1, number = 2):
     
-    enemies = dict()
+    enemies = list()
     for i in range(number):
         match level:
             case 1:
-                enemies[i], mark = evoke_hangman()
+                enemy, mark = evoke_hangman()
+                enemies.append(enemy)
             case 2:
                 enemies[i], mark = evoke_tic_tac_toe()
             case 3:
@@ -89,7 +83,8 @@ def create_enemies(board, level = 1, number = 2):
             case 5:
                 enemies[i], mark = evoke_milestone()
         enemy_starting_position = find_empty_board_position(board)
-        enemies[i].update_coords(enemy_starting_position)
+        print(enemies)
+        enemies[i]["coords"] = enemy_starting_position
         board = place_enemy_on_board(board, enemy_starting_position, mark)
 
     return board, enemies
