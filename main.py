@@ -49,7 +49,7 @@ def main():
             display_game_info(player)
             display_board(board, door_status)
             inventory == True and display_inventory(player["inventory"])
-            print(f"key pressed {key}")
+            #print(f"key pressed {key}")
             if wall_hit:
                 print("Zdrowo przydzwoniłeś(aś) w ścianę. Tracisz 1 pkt życia. Uważaj!")
             key = util.key_pressed()
