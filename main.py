@@ -44,6 +44,8 @@ def main():
         board, enemies = create_enemies(board, level, 6)
         moves = 1
         while current_level == "active":
+            if len(enemies) == 0:
+                door_status = "open"
             util.clear_screen()
             get_game_header()
             display_game_info(player)
