@@ -1,10 +1,11 @@
 import util
 from player import create_player, is_player_dead
 from enemies import create_enemies
-from engine import create_board, put_player_on_board, move_player, move_enemies
+from engine import create_board, put_player_on_board, move_player, move_enemies, one_on_one
 from ui import display_board, display_game_info
 from graphics import get_game_header, get_level_annoucement, show_game_intro, print_skull_and_bones, show_game_legend
 from inventory import get_items_on_board, display_inventory
+import time
 
 BOARD_WIDTH = 40
 BOARD_HEIGHT = 10
@@ -31,6 +32,7 @@ def main():
     get_game_header()
     show_game_intro()
     key = " "
+
     while is_running:
         util.clear_screen()
         get_game_header()
@@ -40,19 +42,40 @@ def main():
         inventory = False
         get_items_on_board(board, level)
         board, enemies = create_enemies(board, level, 6)
+        moves = 1
         while current_level == "active":
+            if len(enemies) == 0:
+                door_status = "open"
             util.clear_screen()
             get_game_header()
             display_game_info(player)
             display_board(board, door_status)
             inventory == True and display_inventory(player["inventory"])
-            print(f"key pressed {key}")
+            #print(f"key pressed {key}")
             if wall_hit:
                 print("Zdrowo przydzwoniłeś(aś) w ścianę. Tracisz 1 pkt życia. Uważaj!")
             key = util.key_pressed()
             if key in MOVEMENT_KEYS:
-                player, board, wall_hit = move_player(key, player, board)
-                move_enemies(enemies, board)
+                player, board, wall_hit, fight = move_player(key, player, board, enemies)
+                if fight:
+                    round = 1
+                    count_enemies = current_enemies = len(enemies)
+                    while count_enemies == current_enemies:
+                        util.clear_screen()
+                        get_game_header()
+                        display_game_info(player, False)
+                        player, enemies = one_on_one(round, player, enemies)
+                        current_enemies = len(enemies)
+                        time.sleep(2)
+                        round += 1
+                util.clear_screen()
+                get_game_header()
+                display_game_info(player)
+                display_board(board, door_status)
+                inventory == True and display_inventory(player["inventory"])
+                if moves % 2 == 0: 
+                    move_enemies(enemies, board)
+                moves += 1
             if key == "i":
                 inventory = True if inventory == False else False
             if key == "l":
@@ -65,6 +88,7 @@ def main():
             if player_dead == True:
                 current_level = "off"
                 is_running = False
+    
     if player_dead == True:
         util.clear_screen()
         print_skull_and_bones()
