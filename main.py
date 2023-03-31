@@ -15,11 +15,6 @@ PLAYER_START_Y = 19
 
 MOVEMENT_KEYS = ["w", "s", "a", "d"]
 
-def find(arr , coords):
-    for x in arr:
-        if x["coords"] == coords:
-            return x
-
 def main():
     util.clear_screen()
     player = create_player(PLAYER_ICON, [PLAYER_START_X, PLAYER_START_Y])
@@ -47,8 +42,6 @@ def main():
         get_items_on_board(board, level)
         board, enemies = create_enemies(board, level, 6)
         moves = 1
-        print(find(enemies, [0, 0]))
-        input("Wait a while... ")
         while current_level == "active":
             util.clear_screen()
             get_game_header()
@@ -60,7 +53,7 @@ def main():
                 print("Zdrowo przydzwoniłeś(aś) w ścianę. Tracisz 1 pkt życia. Uważaj!")
             key = util.key_pressed()
             if key in MOVEMENT_KEYS:
-                player, board, wall_hit = move_player(key, player, board)
+                player, board, wall_hit = move_player(key, player, board, enemies)
                 if moves % 2 == 0: 
                     move_enemies(enemies, board)
                 moves += 1

@@ -23,7 +23,7 @@ def get_board_edges(board):
     return upper_edge, lower_edge, left_edge, right_edge
 
 
-def move_player(key, player, board):
+def move_player(key, player, board, enemies):
     
     player_x, player_y = player["coordinates"]
     upper_edge, lower_edge, left_edge, right_edge = get_board_edges(board)
@@ -33,7 +33,7 @@ def move_player(key, player, board):
         case "w":
             if player_x - 1 >= upper_edge:
                 player["coordinates"] = [player_x - 1, player_y]
-                player = interaction_on_board(player, board[player_x - 1][player_y])
+                player = interaction_on_board(player, enemies, board[player_x - 1][player_y])
                 board[player_x - 1][player_y] = player["icon"]
                 board[player_x][player_y] = 0    
             else:
@@ -42,7 +42,7 @@ def move_player(key, player, board):
         case "s":    
             if player_x + 1 <= lower_edge - 1:
                 player["coordinates"] = [player_x + 1, player_y]
-                player = interaction_on_board(player, board[player_x + 1][player_y])
+                player = interaction_on_board(player, enemies, board[player_x + 1][player_y])
                 board[player_x + 1][player_y] = player["icon"]
                 board[player_x][player_y] = 0                 
             else:
@@ -51,7 +51,7 @@ def move_player(key, player, board):
         case "a":
             if player_y - 1 >= left_edge:
                 player["coordinates"] = [player_x, player_y - 1]
-                player = interaction_on_board(player, board[player_x][player_y -1])
+                player = interaction_on_board(player, enemies, board[player_x][player_y -1])
                 board[player_x][player_y - 1] = player["icon"]
                 board[player_x][player_y] = 0
             else:
@@ -60,7 +60,7 @@ def move_player(key, player, board):
         case "d":
             if player_y + 1 <= right_edge - 1:
                 player["coordinates"] = [player_x, player_y + 1]
-                player = interaction_on_board(player, board[player_x][player_y + 1])
+                player = interaction_on_board(player, enemies, board[player_x][player_y + 1])
                 board[player_x][player_y + 1] = player["icon"]
                 board[player_x][player_y] = 0
             else:
@@ -84,6 +84,7 @@ def check_surroundings(coord, board):
         board[coord[0]][coord[1] + 1] == 0 and potential_moves.append([coord[0], coord[1] + 1])
     return random.choice(potential_moves)
 
+
 def move_enemies(enemies, board):
     for i in range(len(enemies)):
         current_coords = enemies[i]["coords"]
@@ -92,8 +93,15 @@ def move_enemies(enemies, board):
         board[new_coords[0]][new_coords[1]] = board[current_coords[0]][current_coords[1]]
         board[current_coords[0]][current_coords[1]] = 0
 
-def interaction_on_board(player, sign): # co się dzieje po najechaniu na poszczególne litery
-    
+
+def find(arr, coords):
+    for x in arr:
+        if x["coords"] == coords:
+            return x
+
+
+def interaction_on_board(player, enemies, sign): # co się dzieje po najechaniu na poszczególne litery
+    player_coords = player["coordinates"]
     if sign != 0:
         match sign:
             case "L":
@@ -123,6 +131,7 @@ def interaction_on_board(player, sign): # co się dzieje po najechaniu na poszcz
                 else:
                     player["inventory"]["ŁUK"] = 1
             case "W" | "X" | "O" | "Z" | "A":
+                print(find(enemies, player_coords))
                 input("Lets fight! ")
 
     return player     
