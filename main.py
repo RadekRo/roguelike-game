@@ -1,10 +1,11 @@
 import util
 from player import create_player, is_player_dead
 from enemies import create_enemies
-from engine import create_board, put_player_on_board, move_player, move_enemies
+from engine import create_board, put_player_on_board, move_player, move_enemies, one_on_one
 from ui import display_board, display_game_info
 from graphics import get_game_header, get_level_annoucement, show_game_intro, print_skull_and_bones
 from inventory import get_items_on_board, display_inventory
+import time
 
 BOARD_WIDTH = 40
 BOARD_HEIGHT = 10
@@ -53,7 +54,22 @@ def main():
                 print("Zdrowo przydzwoniłeś(aś) w ścianę. Tracisz 1 pkt życia. Uważaj!")
             key = util.key_pressed()
             if key in MOVEMENT_KEYS:
-                player, board, wall_hit = move_player(key, player, board, enemies)
+                player, board, wall_hit, fight = move_player(key, player, board, enemies)
+                if fight:
+                    round = 1
+                    a = 0
+                    while a == 0:
+                        util.clear_screen()
+                        get_game_header()
+                        display_game_info(player, False)
+                        one_on_one(round, player, enemies)
+                        time.sleep(2)
+                        round += 1
+                util.clear_screen()
+                get_game_header()
+                display_game_info(player)
+                display_board(board, door_status)
+                inventory == True and display_inventory(player["inventory"])
                 if moves % 2 == 0: 
                     move_enemies(enemies, board)
                 moves += 1

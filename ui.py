@@ -1,6 +1,6 @@
 ENEMIES_SYMBOLS = ["W", "X", "O", "Z", "A"]
 
-def display_game_info(player):
+def display_game_info(player, show_inventory_info = True):
     mana = player["mana"] * '\u2728'
     health = player["health"] * '\u2764 '
     if len(player["inventory"]) > 0: 
@@ -9,8 +9,8 @@ def display_game_info(player):
         total_strength = player["strength"]
     print(f'''SIŁ: {player["strength"]} ({total_strength})
 MAN: {mana}
-ZDR: {health} 
-naciśnij [i], aby pokazać/ukryć ekwipunek''')
+ZDR: {health}''') 
+    show_inventory_info == True and print("naciśnij [i], aby pokazać/ukryć ekwipunek")
 
 
 def display_board(board, door_status = "closed"):
