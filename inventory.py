@@ -48,8 +48,21 @@ def merge_inventory(items, items_with_coordinates): # łączenie słowników prz
     
 
 def put_items_on_board(board, merged_inventory): # wkładanie przedmiotów do boarda
-    for key in merged_inventory:
-        board[merged_inventory[key][0][0]][merged_inventory[key][0][1]] = key[0]
+
+    board[merged_inventory["LEKARSTWO"][0][0]][merged_inventory["LEKARSTWO"][0][1]] = '\033[32m\u26d1\033[0m'
+    board[merged_inventory["JEDZENIE"][0][0]][merged_inventory["JEDZENIE"][0][1]] = '\033[32m\u267b\033[0m'
+    board[merged_inventory["PICIE"][0][0]][merged_inventory["PICIE"][0][1]] = '\033[32m\u26fe\033[0m'
+    board[merged_inventory["SZTYLET"][0][0]][merged_inventory["SZTYLET"][0][1]] = '\033[33m\u269a\033[0m'
+    board[merged_inventory["DZIDA"][0][0]][merged_inventory["DZIDA"][0][1]] = '\033[33m\u219f\033[0m'
+    board[merged_inventory["MIECZ"][0][0]][merged_inventory["MIECZ"][0][1]] = '\033[33m\u2694\033[0m'
+    board[merged_inventory["ŁUK"][0][0]][merged_inventory["ŁUK"][0][1]] = '\033[33m\u26cf\033[0m'
+
+
+    # keys = ["LEKARSTWO", "JEDZENIE", "PICIE", "SZTYLET", "DZIDA", "MIECZ", "ŁUK"]
+    # values = ['\033[32m\u26d1\033[0m', '\033[32m\u267b\033[0m', '\033[32m\u26fe\033[0m', '\033[33m\u269a\033[0m', '\033[33m\u219f\033[0m', '\033[33m\u2694\033[0m', '\033[33m\u26cf\033[0m']
+    # for i in range(len(keys)):
+    #     board = [merged_inventory[keys[i]][0][0]][merged_inventory[keys[i]][0][1]] = values[i]
+    
     return board
 
 
@@ -74,4 +87,5 @@ board = create_board(BOARD_WIDTH, BOARD_HEIGHT)
 merged_inventory = merge_inventory(items, items_with_coordinates)
 board = put_items_on_board(board, merged_inventory)
 display_board(board, door_status)
+
 

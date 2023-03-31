@@ -26,28 +26,28 @@ def get_enemy_name():
 
 def evoke_hangman():
     name = get_enemy_name()
-    mark = "W"
+    mark = '\033[31m' + '\u2620' + '\033[0m'
     hangman = Enemy(name, "Wisielec")
     return hangman, mark
 
 
 def evoke_tic_tac_toe():
     name = get_enemy_name()
-    mark = random.choice(["X", "O"])
+    mark = '\033[31m' + '\u26d2' + '\033[0m'
     tic_tac_toe = Enemy(name, "XO")
     return tic_tac_toe, mark
 
 
 def evoke_zombie_sailor():
     name = get_enemy_name()
-    mark = "Z"
+    mark = '\033[31m' + '\u26f4' + '\033[0m'
     zombie_sailor = Enemy(name, "Marynarz Zombie")
     return zombie_sailor, mark
 
 
 def evoke_agent_smith():
     name = "Agent Smith"
-    mark = "A"
+    mark = '\033[31m' + '\u26c7' + '\033[0m'
     agent_smith = Enemy(name, "Matrix")
     return agent_smith, mark
 

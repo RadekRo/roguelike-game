@@ -59,6 +59,19 @@ dopadnij krwiożerczego Milestone'a
 i pomścij tych, którzy polegli przed Tobą...\u001B[0m
 
 \033[1;36mNaciśnij [ENTER] aby kontynuować...''')
+    
+def show_game_legend():
+    print('''Do poruszania się po planszy używaj klawiszy:
+             - [W] - ruch w górę
+             - [S] - ruch w dół
+             - [A] - ruch w lewo
+             - [D] - ruch w prawo
+            Wszytkie ikony na czerwono to Twoi wrogowie, jeśli się do nich zbliżysz czeka Cię walka.
+            Wszystkie ikony na żółto to bronie (dodają Ci siły do walki), sprawdź inwentarz [i], żeby zobaczyć co znalazłeś.
+            Ikony na zielono dodają odpowiednio zdrowia (lekarstwo) i many (jedzenie i picie).
+            To ile masz zdrowia, siły i many widać nad planszą.
+            Zabij wszystkich wrogów aby móc otworzyć drzwi i wyjść do kolejnego poziomu.
+             ''')
 
 def print_skull_and_bones():
     print('''
@@ -87,5 +100,15 @@ MMMMX:      .:d0NMMMMMMMMMMMMMMMMMMMWKkc.      .OM
 MMMMMK,   .c0WMMMMMMMMMMMMMMMMMMMMMMMMMMXo.   .kWM
 MMMMMMO;,:kWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0l,,xNMM
 ''')
-
-print_skull_and_bones()
+print('\033[33m' +'\u2694' + '\033[0m')
+print('\033[33m' +'\u26cf' + '\033[0m')
+print('\033[33m' +'\u219f' + '\033[0m')
+print('\033[33m' +'\u269a' + '\033[0m')
+print('\033[32m' +'\u26fe' + '\033[0m')
+print('\033[32m' +'\u26d1' + '\033[0m')
+print('\033[32m' +'\u267b' + '\033[0m')
+print('\u26f9')
+print('\033[31m' + '\u2620' + '\033[0m')
+print('\033[31m' + '\u26d2' + '\033[0m')
+print('\033[31m' + '\u26f4' + '\033[0m')
+print('\033[31m' + '\u26c7' + '\033[0m')

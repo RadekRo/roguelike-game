@@ -1,4 +1,4 @@
-from util import key_pressed
+import random
 
 def create_board(width, height):
     board = list()
@@ -71,38 +71,62 @@ def move_player(key, player, board):
 
     return player, board, player_hits_the_wall
 
+def check_surroundings(coord, board):
+    upper_edge, lower_edge, left_edge, right_edge = get_board_edges(board)
+    potential_moves = list()
+    if coord[0] > upper_edge:
+        board[coord[0] - 1][coord[1]] == 0 and potential_moves.append([coord[0] - 1, coord[1]])
+    if coord[0] < lower_edge - 1:
+        board[coord[0] + 1][coord[1]] == 0 and potential_moves.append([coord[0] + 1, coord[1]])
+    if coord[1] > left_edge:
+        board[coord[0]][coord[1] - 1] == 0 and potential_moves.append([coord[0], coord[1] - 1])
+    if coord[1] < right_edge - 1:
+        board[coord[0]][coord[1] + 1] == 0 and potential_moves.append([coord[0], coord[1] + 1])
+    return random.choice(potential_moves)
+
+def move_enemies(enemies, board):
+    for i in range(len(enemies)):
+        current_coords = enemies[i].coords
+        new_coords = check_surroundings(current_coords, board)
+        enemies[i].update_coords(new_coords)
+        board[new_coords[0]][new_coords[1]] = board[current_coords[0]][current_coords[1]]
+        board[current_coords[0]][current_coords[1]] = 0
+
 def interaction_on_board(player, sign): # co się dzieje po najechaniu na poszczególne litery
     
     if sign != 0:
         match sign:
-            case "L":
+            case '\033[32m\u26d1\033[0m': # LEKARSTWO
                 player["health"] += 1
-            case "J":
+            case '\033[32m\u267b\033[0m': # JEDZENIE
                 player["mana"] += 1
-            case "J":
+            case '\033[32m\u26fe\033[0m': # PICIE
                 player["mana"] += 1
-            case "S":
+            case '\033[33m\u269a\033[0m':
                 if "SZTYLET" in player["inventory"]:
                     player["inventory"]["SZTYLET"] += 1
                 else:
                     player["inventory"]["SZTYLET"] = 1
-            case "D":
+            case '\033[33m\u219f\033[0m':
                 if "DZIDA" in player["inventory"]:
                     player["inventory"]["DZIDA"] += 1
                 else:
                     player["inventory"]["DZIDA"] = 1            
-            case "M":
+            case '\033[33m\u2694\033[0m':
                 if "MIECZ" in player["inventory"]:
                     player["inventory"]["MIECZ"] += 1
                 else:
                     player["inventory"]["MIECZ"] = 1
-            case "Ł":
+            case '\033[33m\u26cf\033[0m':
                 if "ŁUK" in player["inventory"]:
                     player["inventory"]["ŁUK"] += 1
                 else:
                     player["inventory"]["ŁUK"] = 1
-            case "W":
+            case "W" | "X" | "O" | "Z" | "A":
                 input("Game paused...")
 
     return player     
+
+def fight(player, enemy):
+    pass
 

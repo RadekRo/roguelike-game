@@ -10,7 +10,8 @@ def display_game_info(player):
     print(f'''SIŁ: {player["strength"]} ({total_strength})
 MAN: {mana}
 ZDR: {health} 
-naciśnij [i], aby pokazać/ukryć ekwipunek''')
+naciśnij [i], aby pokazać/ukryć ekwipunek
+naciśnij [l], żeby zobaczyć legendę gry''')
 
 
 def display_board(board, door_status = "closed"):
