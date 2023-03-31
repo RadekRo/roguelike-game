@@ -99,6 +99,13 @@ def find(arr, coords):
     for x in arr:
         if x["coords"] == coords:
             return x
+        
+def index(arr, coords):
+    i = 0
+    for x in arr:
+        if x["coords"] == coords:
+            return i
+        i += 1
 
 
 def interaction_on_board(player, enemies, sign): # co się dzieje po najechaniu na poszczególne litery
@@ -150,6 +157,7 @@ ZDR: {enemy_health}''')
         if player["strength"] + dice > enemy["strength"]:
             lost_hp = player["strength"] + dice - enemy["strength"]
             print(f"Trafienie! Co za cios! Przeciwnik traci {lost_hp} pkt. życia!")
+            enemy["health"] -= lost_hp
         else:
             print("Pech! Nie udaje Ci się zadać obrażeń...")
     else:
@@ -158,6 +166,8 @@ ZDR: {enemy_health}''')
         if enemy["strength"] + dice > player["strength"]:
             lost_hp = enemy["strength"] + dice - player["strength"]
             print(f"Trafienie! Czujesz ostry ból. Tracisz {lost_hp} pkt. życia!")
+            player["health"] -= lost_hp
         else:
             print("Szczęśliwe unikasz obrażeń!")
-
+    
+        

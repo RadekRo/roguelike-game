@@ -57,12 +57,13 @@ def main():
                 player, board, wall_hit, fight = move_player(key, player, board, enemies)
                 if fight:
                     round = 1
-                    a = 0
-                    while a == 0:
+                    enemy_count = current_enemy_count = len(enemies)
+                    while current_enemy_count == enemy_count or player["health"] > 0:
                         util.clear_screen()
                         get_game_header()
                         display_game_info(player, False)
-                        one_on_one(round, player, enemies)
+                        player, enemies = one_on_one(round, player, enemies)
+                        current_enemy_count = len(enemies)
                         time.sleep(2)
                         round += 1
                 util.clear_screen()
