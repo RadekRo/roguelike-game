@@ -96,17 +96,11 @@ def move_enemies(enemies, board):
 
 
 def find(arr, coords):
-    for x in arr:
-        if x["coords"] == coords:
-            return x
-        
-def index(arr, coords):
     i = 0
     for x in arr:
         if x["coords"] == coords:
-            return i
+            return x, i
         i += 1
-
 
 def interaction_on_board(player, enemies, sign): # co się dzieje po najechaniu na poszczególne litery
     player_coords = player["coordinates"]
@@ -145,7 +139,7 @@ def interaction_on_board(player, enemies, sign): # co się dzieje po najechaniu 
     return player, fight
 
 def one_on_one(round, player, enemies):
-    enemy = find(enemies, player["coordinates"])
+    enemy, index = find(enemies, player["coordinates"])
     enemy_health = enemy["health"] * '\u2764 '
     print(f'''---------- TWÓJ PRZECIWNIK ----------
 {enemy["name"]}, ({enemy["type"]})
@@ -157,7 +151,7 @@ ZDR: {enemy_health}''')
         if player["strength"] + dice > enemy["strength"]:
             lost_hp = player["strength"] + dice - enemy["strength"]
             print(f"Trafienie! Co za cios! Przeciwnik traci {lost_hp} pkt. życia!")
-            enemy["health"] -= lost_hp
+            enemies[index]["health"] -= lost_hp
         else:
             print("Pech! Nie udaje Ci się zadać obrażeń...")
     else:
@@ -169,5 +163,7 @@ ZDR: {enemy_health}''')
             player["health"] -= lost_hp
         else:
             print("Szczęśliwe unikasz obrażeń!")
-    
-        
+    if enemies[index]["health"] < 1:
+        del enemies[index]
+        print("Twój przeciwnik zginął...")
+    return player, enemies
