@@ -3,13 +3,13 @@ from player import create_player, is_player_dead
 from enemies import create_enemies
 from engine import create_board, put_player_on_board, move_player, move_enemies
 from ui import display_board, display_game_info
-from graphics import get_game_header, get_level_annoucement, show_game_intro, print_skull_and_bones
+from graphics import get_game_header, get_level_annoucement, show_game_intro, print_skull_and_bones, show_game_legend
 from inventory import get_items_on_board, display_inventory
 
 BOARD_WIDTH = 40
 BOARD_HEIGHT = 10
 
-PLAYER_ICON = '\033[1;36m' + '@' + '\033[0m'
+PLAYER_ICON = '\033[1;36m' + '\u26f9' + '\033[0m'
 PLAYER_START_X = 9
 PLAYER_START_Y = 19
 
@@ -55,6 +55,9 @@ def main():
                 move_enemies(enemies, board)
             if key == "i":
                 inventory = True if inventory == False else False
+            if key == "l":
+                show_game_legend()
+                input("Naciśnij ENTER, aby ukryć legendę")
             if key == "q":
                 current_level = "off"
                 is_running = False

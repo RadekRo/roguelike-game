@@ -96,28 +96,28 @@ def interaction_on_board(player, sign): # co się dzieje po najechaniu na poszcz
     
     if sign != 0:
         match sign:
-            case "L":
+            case '\033[32m\u26d1\033[0m': # LEKARSTWO
                 player["health"] += 1
-            case "J":
+            case '\033[32m\u267b\033[0m': # JEDZENIE
                 player["mana"] += 1
-            case "J":
+            case '\033[32m\u26fe\033[0m': # PICIE
                 player["mana"] += 1
-            case "S":
+            case '\033[33m\u269a\033[0m':
                 if "SZTYLET" in player["inventory"]:
                     player["inventory"]["SZTYLET"] += 1
                 else:
                     player["inventory"]["SZTYLET"] = 1
-            case "D":
+            case '\033[33m\u219f\033[0m':
                 if "DZIDA" in player["inventory"]:
                     player["inventory"]["DZIDA"] += 1
                 else:
                     player["inventory"]["DZIDA"] = 1            
-            case "M":
+            case '\033[33m\u2694\033[0m':
                 if "MIECZ" in player["inventory"]:
                     player["inventory"]["MIECZ"] += 1
                 else:
                     player["inventory"]["MIECZ"] = 1
-            case "Ł":
+            case '\033[33m\u26cf\033[0m':
                 if "ŁUK" in player["inventory"]:
                     player["inventory"]["ŁUK"] += 1
                 else:
