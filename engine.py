@@ -146,9 +146,9 @@ def one_on_one(round, player, enemies):
 {enemy["name"]}, ({enemy["type"]})
 SIŁ: {enemy["strength"]}
 ZDR: {enemy_health}''') 
+    dice = random.randint(1, 6)
     if round%2:
         print("Twój atak!")
-        dice = random.randint(1, 6)
         if player["strength"] + sum(player["inventory"].values()) + dice > enemy["strength"]:
             lost_hp = player["strength"] + sum(player["inventory"].values()) + dice - enemy["strength"]
             print(f"Trafienie! Co za cios! Przeciwnik traci {lost_hp} pkt. życia!")
@@ -157,7 +157,6 @@ ZDR: {enemy_health}''')
             print("Pech! Nie udaje Ci się zadać obrażeń...")
     else:
         print("Atak przeciwnika!")
-        dice = random.randint(1, 6)
         if enemy["strength"] + dice > player["strength"]:
             lost_hp = enemy["strength"] + dice - player["strength"]
             print(f"Trafienie! Czujesz ostry ból. Tracisz {lost_hp} pkt. życia!")
