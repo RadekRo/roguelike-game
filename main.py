@@ -32,7 +32,7 @@ def main():
     get_game_header()
     show_game_intro()
     key = " "
-
+    
     while is_running:
         util.clear_screen()
         get_game_header()
