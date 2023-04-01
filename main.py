@@ -2,7 +2,7 @@ import util
 from player import create_player, is_player_dead
 from enemies import create_enemies
 from engine import create_board, put_player_on_board, move_player, move_enemies, one_on_one
-from ui import display_board, display_game_info
+from ui import display_board, display_game_info, door
 from graphics import get_game_header, get_level_annoucement, show_game_intro, print_skull_and_bones, show_game_legend
 from inventory import get_items_on_board, display_inventory
 import time
@@ -36,12 +36,12 @@ def main():
     while is_running:
         util.clear_screen()
         get_game_header()
-        get_level_annoucement(1)
+        get_level_annoucement(level)
         current_level = "active"
         wall_hit = False
         inventory = False
         get_items_on_board(board, level)
-        board, enemies = create_enemies(board, level, 6)
+        board, enemies = create_enemies(board, level, 1)
         moves = 1
         while current_level == "active":
             if len(enemies) == 0:
@@ -56,6 +56,11 @@ def main():
                 print("Zdrowo przydzwoniłeś(aś) w ścianę. Tracisz 1 pkt życia. Uważaj!")
             key = util.key_pressed()
             if key in MOVEMENT_KEYS:
+                door_coordinates = door(board, 6) if len(enemies) < 1 else [0, 0]
+                if player["coordinates"] in door_coordinates and door_status == "open" and key == "w":
+                    level += 1
+                    current_level = "inactive"
+                    continue
                 player, board, wall_hit, fight = move_player(key, player, board, enemies)
                 if fight:
                     round = 1
@@ -72,6 +77,7 @@ def main():
                 get_game_header()
                 display_game_info(player)
                 display_board(board, door_status)
+              
                 inventory == True and display_inventory(player["inventory"])
                 if moves % 2 == 0: 
                     move_enemies(enemies, board)
