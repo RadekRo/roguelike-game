@@ -41,7 +41,7 @@ def main():
         wall_hit = False
         inventory = False
         get_items_on_board(board, level)
-        board, enemies = create_enemies(board, level, 1)
+        board, enemies = create_enemies(board, level, 8)
         moves = 1
         while current_level == "active":
             if len(enemies) == 0:
