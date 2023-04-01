@@ -139,7 +139,7 @@ def interaction_on_board(player, enemies, sign): # co się dzieje po najechaniu 
 
     return player, fight
 
-def one_on_one(round, player, enemies):
+def one_on_one(round, player, enemies, level):
     enemy, index = find(enemies, player["coordinates"])
     enemy_health = enemy["health"] * '\u2764 '
     print(f'''---------- TWÓJ PRZECIWNIK ----------
@@ -148,9 +148,10 @@ SIŁ: {enemy["strength"]}
 ZDR: {enemy_health}''') 
     dice = random.randint(1, 6)
     if round%2:
+        fight_factor = player["strength"] + sum(player["inventory"].values()) if level != 4 else player["mana"]
         print("Twój atak!")
-        if player["strength"] + sum(player["inventory"].values()) + dice > enemy["strength"]:
-            lost_hp = player["strength"] + sum(player["inventory"].values()) + dice - enemy["strength"]
+        if fight_factor + dice > enemy["strength"]:
+            lost_hp = fight_factor + dice - enemy["strength"]
             print(f"Trafienie! Co za cios! Przeciwnik traci {lost_hp} pkt. życia!")
             enemies[index]["health"] -= lost_hp
         else:
