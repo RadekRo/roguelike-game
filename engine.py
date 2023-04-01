@@ -134,7 +134,7 @@ def interaction_on_board(player, enemies, sign): # co się dzieje po najechaniu 
                     player["inventory"]["ŁUK"] += 1
                 else:
                     player["inventory"]["ŁUK"] = 1
-            case "\x1b[31m☠\x1b[0m" | "\033[31m\u26d2\033[0m" | "\033[31m\u26f4\033[0m" | "\033[31m\u26c7\033[0m":
+            case "\x1b[31m☠\x1b[0m" | "\033[31m\u26d2\033[0m" | "\033[31m\u26f4\033[0m" | "\033[31m\u26c7\033[0m" | "\033[31m#\033[0m":
                     fight = True
 
     return player, fight
@@ -168,3 +168,4 @@ ZDR: {enemy_health}''')
         del enemies[index]
         print("Twój przeciwnik zginął...")
     return player, enemies
+

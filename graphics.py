@@ -1,3 +1,5 @@
+import sys
+
 def get_game_header():
     print('''\033[1;31m
    ______          __                      __
@@ -14,6 +16,9 @@ def get_game_header():
 ------------------------------------------''')
 
 def get_level_annoucement(level):
+    if level == 6:
+        quit()
+        
     space, text = get_level_description(level)
     space = " " * space
     input(f'''
@@ -155,6 +160,11 @@ def print_congrats():
     _ __ ___ (_| | ___ ___| |_ ___  _ __   ___| | | |      
    | '_ ` _ \| | |/ _ / __| __/ _ \| '_ \ / _ | | | |      
    | | | | | | | |  __\__ | || (_) | | | |  __|_|_|_|      
-   |_| |_| |_|_|_|\___|___/\__\___/|_| |_|\___(_(_(_)'\033[0m'
+   |_| |_| |_|_|_|\___|___/\__\___/|_| |_|\___(_(_(_)\033[0m
 ''')
 
+def quit():
+    print_you_win()
+    print_congrats()
+    print("Dzięki za grę i do zobaczenia na następnym module CodeCoola.")
+    sys.exit(0)

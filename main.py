@@ -3,7 +3,7 @@ from player import create_player, is_player_dead
 from enemies import create_enemies
 from engine import create_board, put_player_on_board, move_player, move_enemies, one_on_one
 from ui import display_board, display_game_info, door
-from graphics import get_game_header, get_level_annoucement, show_game_intro, print_skull_and_bones, show_game_legend
+from graphics import get_game_header, get_level_annoucement, show_game_intro, print_skull_and_bones, show_game_legend, print_congrats
 from inventory import get_items_on_board, display_inventory
 import time
 
