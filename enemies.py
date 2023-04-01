@@ -12,7 +12,7 @@ def get_enemy_health(basic):
 
 def get_enemy_name():
     return NAMES_BASE[random.randint(0, len(NAMES_BASE) - 1)]
-    
+ 
 
 def evoke_hangman():
     mark = '\033[31m' + '\u2620' + '\033[0m'
@@ -82,7 +82,7 @@ def place_enemy_on_board(board, coordinations, sign):
 def create_enemies(board, level = 1, number = 2):
     
     enemies = list()
-    for i in range(number):
+    for i in range(number): 
         match level:
             case 1:
                 enemy, mark = evoke_hangman()
@@ -98,8 +98,10 @@ def create_enemies(board, level = 1, number = 2):
                 enemies.append(enemy)
             case 5:
                 enemy, mark = evoke_milestone()
+                enemies.append(enemy)
         enemy_starting_position = find_empty_board_position(board)
         enemies[i]["coords"] = enemy_starting_position
         board = place_enemy_on_board(board, enemy_starting_position, mark)
 
     return board, enemies
+    
