@@ -69,7 +69,7 @@ def main():
                         util.clear_screen()
                         get_game_header()
                         display_game_info(player, False)
-                        player, enemies = one_on_one(round, player, enemies)
+                        player, enemies = one_on_one(round, player, enemies, level)
                         current_enemies = len(enemies)
                         time.sleep(2)
                         round += 1
