@@ -48,3 +48,4 @@ def close_door(wall, door_size = 4):
         wall[i] = "\033[0;31m" + wall[i] + "\u001b[0m"
     wall = "".join(wall)    
     return wall
+
