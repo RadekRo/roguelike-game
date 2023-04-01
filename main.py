@@ -25,7 +25,6 @@ def main():
     
     is_running = True
     level = 1
-    door_status = "closed"
     get_game_header()
     board = put_player_on_board(board, player)
     util.clear_screen()
@@ -34,6 +33,7 @@ def main():
     key = " "
     
     while is_running:
+        door_status = "closed"
         util.clear_screen()
         get_game_header()
         get_level_annoucement(level)
@@ -41,7 +41,7 @@ def main():
         wall_hit = False
         inventory = False
         get_items_on_board(board, level)
-        board, enemies = create_enemies(board, level, 1)
+        board, enemies = create_enemies(board, level, 8)
         moves = 1
         while current_level == "active":
             if len(enemies) == 0:
@@ -65,7 +65,7 @@ def main():
                 if fight:
                     round = 1
                     count_enemies = current_enemies = len(enemies)
-                    while count_enemies == current_enemies:
+                    while count_enemies == current_enemies and player["health"] > 0:
                         util.clear_screen()
                         get_game_header()
                         display_game_info(player, False)
@@ -92,7 +92,7 @@ def main():
                 is_running = False
             player_dead = is_player_dead(player)
             if player_dead == True:
-                current_level = "off"
+                current_level = "inactive"
                 is_running = False
     
     if player_dead == True:
