@@ -65,7 +65,7 @@ def main():
                 if fight:
                     round = 1
                     count_enemies = current_enemies = len(enemies)
-                    while count_enemies == current_enemies:
+                    while count_enemies == current_enemies and player["health"] > 0:
                         util.clear_screen()
                         get_game_header()
                         display_game_info(player, False)
