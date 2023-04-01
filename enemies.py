@@ -70,7 +70,6 @@ def find_empty_board_position(board):
 
 
 def place_enemy_on_board(board, coordinations, sign):
-    #board[coordinations[0]][coordinations[1]] = "\u001B[31m" + sign + "\u001b[0m"
     board[coordinations[0]][coordinations[1]] = sign
     return board
 
@@ -99,12 +98,3 @@ def create_enemies(board, level = 1, number = 2):
         board = place_enemy_on_board(board, enemy_starting_position, mark)
 
     return board, enemies
-
-#tests
-# board = [[0, 1, 1],[0, 0, 0],[1, 1, 1]]
-# print(board)
-# enemies, board = create_enemy(board, 3, 3)
-# print(enemies[0])
-# print(enemies[1])
-# print(enemies[2])
-# print(board)
