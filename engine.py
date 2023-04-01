@@ -111,9 +111,9 @@ def interaction_on_board(player, enemies, sign): # co się dzieje po najechaniu 
             case '\033[32m\u26d1\033[0m': # LEKARSTWO
                 player["health"] += 1
             case '\033[32m\u267b\033[0m': # JEDZENIE
-                player["mana"] += 1
+                player["mana"] += 5
             case '\033[32m\u26fe\033[0m': # PICIE
-                player["mana"] += 1
+                player["mana"] += 5
             case '\033[33m\u269a\033[0m':
                 if "SZTYLET" in player["inventory"]:
                     player["inventory"]["SZTYLET"] += 1

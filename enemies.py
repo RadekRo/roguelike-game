@@ -48,8 +48,8 @@ def evoke_agent_smith():
     mark = '\033[31m' + '\u26c7' + '\033[0m'
     agent_smith = { "name": "Agent Smith", 
                 "type": "Matrix", 
-                "strength": get_enemy_strength(2), 
-                "health": get_enemy_health(2), 
+                "strength": get_enemy_strength(1), 
+                "health": get_enemy_health(1), 
                 "coords": list() }
     return agent_smith, mark
     
