@@ -55,8 +55,13 @@ def evoke_agent_smith():
     
 
 def evoke_milestone():
-    #TODO Boss instance, create when the main functions will be operative
-    pass
+    mark = '\033[31m' + '#' + '\033[0m'
+    milestone = { "name": "Milestone", 
+                "type": "exam", 
+                "strength": get_enemy_strength(0.25), 
+                "health": get_enemy_health(0.25), 
+                "coords": list() }
+    return milestone, mark
 
 
 def find_empty_board_position(board):
