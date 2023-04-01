@@ -133,7 +133,7 @@ def create_player(player_icon, player_starting_coordinates):
     return player
 
 def is_player_dead(player):
-    if player["health"] == 0:
+    if player["health"] <= 0:
         return True
     else:
         return False
