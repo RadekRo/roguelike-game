@@ -133,7 +133,7 @@ def interaction_on_board(player, enemies, sign): # co się dzieje po najechaniu 
                     player["inventory"]["ŁUK"] += 1
                 else:
                     player["inventory"]["ŁUK"] = 1
-            case "\x1b[31m☠\x1b[0m" | "X" | "O" | "Z" | "A":
+            case "\x1b[31m☠\x1b[0m" | "X" | "Z" | "A":
                     fight = True
 
     return player, fight

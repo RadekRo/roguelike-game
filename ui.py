@@ -49,3 +49,9 @@ def close_door(wall, door_size = 4):
     wall = "".join(wall)    
     return wall
 
+def door(board, door_size):
+    door_start = int(len(board[0])  / 2) - int(door_size / 2)
+    door_coords = list()
+    for i in range(door_size):
+        door_coords.append([0, door_start + i])
+    return door_coords
