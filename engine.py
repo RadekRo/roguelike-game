@@ -149,7 +149,7 @@ ZDR: {enemy_health}''')
     if round%2:
         print("Twój atak!")
         dice = random.randint(1, 6)
-        if player["strength"] + dice > enemy["strength"]:
+        if player["strength"] + sum(player["inventory"].values()) + dice > enemy["strength"]:
             lost_hp = player["strength"] + dice - enemy["strength"]
             print(f"Trafienie! Co za cios! Przeciwnik traci {lost_hp} pkt. życia!")
             enemies[index]["health"] -= lost_hp

@@ -25,7 +25,6 @@ def main():
     
     is_running = True
     level = 1
-    door_status = "closed"
     get_game_header()
     board = put_player_on_board(board, player)
     util.clear_screen()
@@ -34,6 +33,7 @@ def main():
     key = " "
     
     while is_running:
+        door_status = "closed"
         util.clear_screen()
         get_game_header()
         get_level_annoucement(level)
@@ -92,7 +92,7 @@ def main():
                 is_running = False
             player_dead = is_player_dead(player)
             if player_dead == True:
-                current_level = "off"
+                current_level = "inactive"
                 is_running = False
     
     if player_dead == True:
