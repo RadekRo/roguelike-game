@@ -4,10 +4,10 @@ NAMES_BASE = ["Kai", "Eliana", "Jayden", "Ezra", "Luca", "Rowan", "Nova", "Amara
 
 
 def get_enemy_strength(basic):
-    return basic * random.randint(2, 4)
+    return basic * random.randint(1, 5)
 
 def get_enemy_health(basic):
-    return basic * random.randint(3, 5)
+    return int(basic * random.randint(2, 6))
 
 
 def get_enemy_name():
@@ -28,8 +28,8 @@ def evoke_tic_tac_toe():
     mark = '\033[31m' + '\u26d2' + '\033[0m'
     tic_tac_toe = { "name": get_enemy_name(), 
                 "type": "XO", 
-                "strength": get_enemy_strength(2), 
-                "health": get_enemy_health(2), 
+                "strength": get_enemy_strength(1.25), 
+                "health": get_enemy_health(1.25), 
                 "coords": list() }
     return tic_tac_toe, mark
     
@@ -38,8 +38,8 @@ def evoke_zombie_sailor():
     mark = '\033[31m' + '\u26f4' + '\033[0m'
     zombie_sailor = { "name": get_enemy_name(), 
                 "type": "Marynarz Zombie", 
-                "strength": get_enemy_strength(3), 
-                "health": get_enemy_health(3), 
+                "strength": get_enemy_strength(1.5), 
+                "health": get_enemy_health(1.5), 
                 "coords": list() }
     return zombie_sailor, mark
     
@@ -48,8 +48,8 @@ def evoke_agent_smith():
     mark = '\033[31m' + '\u26c7' + '\033[0m'
     agent_smith = { "name": "Agent Smith", 
                 "type": "Matrix", 
-                "strength": get_enemy_strength(4), 
-                "health": get_enemy_health(4), 
+                "strength": get_enemy_strength(2), 
+                "health": get_enemy_health(2), 
                 "coords": list() }
     return agent_smith, mark
     
