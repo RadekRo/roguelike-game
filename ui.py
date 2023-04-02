@@ -1,11 +1,11 @@
+def get_total_strength(player):
+    return  player["strength"] + sum(player["inventory"].values())
+
 def display_game_info(player, show_inventory_info = True):
     mana = player["mana"] * '\u2728'
     health = player["health"] * '\u2764 '
+    total_strength = get_total_strength(player) if len(player["inventory"]) > 0 else player["strength"]
     
-    if len(player["inventory"]) > 0: 
-        total_strength = player["strength"] + sum(player["inventory"].values())
-    else:
-        total_strength = player["strength"]
     
     print(f'''SIŁ: {player["strength"]} ({total_strength})
 MAN: {mana}
