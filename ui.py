@@ -6,7 +6,6 @@ def display_game_info(player, show_inventory_info = True):
     health = player["health"] * '\u2764 '
     total_strength = get_total_strength(player) if len(player["inventory"]) > 0 else player["strength"]
     
-    
     print(f'''SIŁ: {player["strength"]} ({total_strength})
 MAN: {mana}
 ZDR: {health}''') 
@@ -22,10 +21,7 @@ def display_board(board, door_status = "closed"):
     for row in board:
         wall += "\n\u2588"
         for col in row:
-            if col == 0:
-                insert = " "
-            else:
-                insert = col
+            insert = " " if col == 0 else col
             wall += insert
         wall += "\u2588"
     print(wall)
