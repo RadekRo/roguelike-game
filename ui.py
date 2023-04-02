@@ -28,10 +28,14 @@ def display_board(board, door_status = "closed"):
     print("\u2580"*(len(board[0])+2))
 
 
+def get_door_start_coordinates(board_width, door_size):
+    return int(int(board_width) / 2 - int(door_size / 2))
+
+
 def open_door(wall, door_size = 4):
     wall = list(wall)
-    half_wall = int(len(wall)  / 2) - int(door_size/2)
-    for i in range(half_wall, half_wall + door_size):
+    door_start_coords = get_door_start_coordinates(len(wall), door_size)
+    for i in range(door_start_coords, door_start_coords + door_size):
         wall[i] = " "
     wall = "".join(wall)    
     return wall
@@ -39,16 +43,16 @@ def open_door(wall, door_size = 4):
 
 def close_door(wall, door_size = 4):
     wall = list(wall)
-    half_wall = int(len(wall)  / 2) - int(door_size/2)
-    for i in range(half_wall, half_wall + door_size):
+    door_start_coords = get_door_start_coordinates(len(wall), door_size)
+    for i in range(door_start_coords, door_start_coords + door_size):
         wall[i] = "\033[0;31m" + wall[i] + "\u001b[0m"
     wall = "".join(wall)    
     return wall
 
 
 def door(board, door_size):
-    door_start = int(len(board[0])  / 2) - int(door_size / 2)
+    door_start_coords = get_door_start_coordinates(len(board[0]), door_size)
     door_coords = list()
     for i in range(door_size):
-        door_coords.append([0, door_start + i])
+        door_coords.append([0, door_start_coords + i])
     return door_coords
